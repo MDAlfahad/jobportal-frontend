@@ -7,6 +7,9 @@ import Image from "../../images/authman.png";
 import useAuthStore from "../../../Store/userAuth";
 import Errorcard from "../ErrorCard";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import ErrorImage from "../../images/error.png"
+import GreenTick from "../../images/GreenTick.png"
+
 
 const UserLSignupPage = () => {
   const navigate = useNavigate();
@@ -67,7 +70,9 @@ const UserLSignupPage = () => {
         >
           <Errorcard
           onclick={!success==true ?clearMessage : message => navigate("/login-page")}
-          head={message} 
+          image={!success === true ? <img src={ErrorImage} width={70}/> : <img src={GreenTick} width={70}/> }
+          para = {!success === true ? "Error state Conformation" : "Congratulations"}
+          head={message } 
           type={success ? "success" : "error"}
            />
         </div>

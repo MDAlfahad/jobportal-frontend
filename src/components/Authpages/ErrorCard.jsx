@@ -1,6 +1,5 @@
 import Button from "../Components/buttons/ButtonComponents";
-import ErrorImage from "../images/error.png"
-const Errorcard = ({ head, onclick }) => {
+const Errorcard = ({ head, onclick, para, image }) => {
   return (
     <div
       className={
@@ -8,17 +7,18 @@ const Errorcard = ({ head, onclick }) => {
       }
     >
       <div className="flex items-center gap-2">
-        <div >
-          <img src={ErrorImage} width={70} alt="" />
-        </div>
+        <div>{image}</div>
         <div>
-        <h1 className="text-[14px] font-regular">Error state Conformation</h1>
-      <p className="text-[12px] py-2">{head}</p>
-      </div>
+          <h1 className="text-[14px] font-regular">{para}</h1>
+          <p className="text-[12px] py-2">{head}</p>
+        </div>
       </div>
       <button
-      onClick={onclick}
-      className="w-full bg-secondary rounded-sm hover:bg-textcolor text-white shadow-lg ">Ok</button>
+        onClick={onclick}
+        className="w-full bg-secondary rounded-sm hover:bg-textcolor text-white shadow-lg my-2 "
+      >
+        Ok
+      </button>
     </div>
   );
 };

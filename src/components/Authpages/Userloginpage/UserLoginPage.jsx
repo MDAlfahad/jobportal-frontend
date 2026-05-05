@@ -7,6 +7,8 @@ import useAuthStore from "../../../Store/userAuth";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import Image from "../../images/authman.png";
 import Errorcard from "../ErrorCard";
+import ErrorImage from "../../images/error.png"
+import GreenTick from "../../images/greenTick.png"
 // import apiClient from "../../../API/API";
 
 const UserLoginPage = () => {
@@ -84,6 +86,8 @@ const UserLoginPage = () => {
         >
           <Errorcard
           onclick={!success==true ?clearMessage : message => navigate("/login-page")}
+          image={!success === true ? <img src={ErrorImage} width={70}/> : <img src={GreenTick} width={70}/> }
+          para = {!success === true ? "Error state Conformation" : "Congratulations"}
           head={message} 
           type={success ? "success" : "error"}
            />
