@@ -15,7 +15,6 @@ import JobPageRoute from "../Pages/jobpages/JobpageDetals/JobPageRoute";
 import ProtectedRoute from "../../protectetroutes/ProtectedRoute";
 import NotFound404 from "../404NotFound/NotFound404";
 import ContactPage from "../Pages/ContactPage/ContactPage";
-import Notificationpage from "../Pages/Notification/Notificationpage";
 import { useEffect } from "react";
 import useThemeStore from "../../Store/lightDarkmode";
 
@@ -38,7 +37,6 @@ const MainRoute = () => {
         <Route path="/user-signup" element={<UserSignupPage />} />
         <Route path="/company-signup" element={<CompanySignupPage />} />
         <Route path="/job-page-route/:id" element={<JobPageRoute />} />
-        <Route path="/notification" element={<Notificationpage />} />
         {/* ---  Student Dashboard Protection --*/}
         {/* Fixed: wrapped "user" in an array to match ProtectedRoute logic */}
         <Route element={<ProtectedRoute allowedRoles={["user"]} />}>

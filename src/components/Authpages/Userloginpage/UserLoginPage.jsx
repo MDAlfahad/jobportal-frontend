@@ -24,6 +24,7 @@ const UserLoginPage = () => {
 
   // const API_CALL = `http://localhost:4000`
   const API = import.meta.env.VITE_API_URL;
+  // console.log("API URL:", API);
 
 
   const handlelogin = async (e) => {

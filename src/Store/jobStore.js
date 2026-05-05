@@ -4,6 +4,7 @@ import axios from "axios";
 // const API_BASE = "http://localhost:4000";
 const API = import.meta.env.VITE_API_URL;
 
+
 const useJobStore = create((set, get) => ({
   jobs: [],
   loading: false,
