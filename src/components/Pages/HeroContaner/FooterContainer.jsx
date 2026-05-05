@@ -11,6 +11,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const FooterContainer = () => {
+  const API = import.meta.env.VITE_API_URL;
   const [email, setEmail] = useState("");
 
   const apply = async (e) => {
@@ -22,7 +23,7 @@ const FooterContainer = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:4000/api/subscribe", {
+      const res = await axios.post(`${API}/api/subscribe`, {
         email,
       });
 

@@ -17,7 +17,9 @@ import useAuthStore from "../../../Store/userAuth";
 import axios from "axios";
 
 const JobApplyForm = ({ className, onClose }) => {
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
+
   const { id } = useParams();
   const [isJobData, setIsJobData] = useState(null);
   const { jobs } = useJobStore();
@@ -39,7 +41,7 @@ const JobApplyForm = ({ className, onClose }) => {
       setIsJobData(cahched_job);
     }
 
-    fetch(`${API_CALL}/api/jobdata/${id}`)
+    fetch(`${API}/api/jobdata/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setIsJobData(data);
@@ -75,7 +77,7 @@ const JobApplyForm = ({ className, onClose }) => {
     console.log(isJobData.company_id);
 
     try {
-      const response = await fetch(`${API_CALL}/api/apply-form`, {
+      const response = await fetch(`${API}/api/apply-form`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -107,7 +109,7 @@ const JobApplyForm = ({ className, onClose }) => {
   // Send  Mail
   const apply = async () => {
     try {
-      const res = await axios.post(`${API_CALL}/api/sendMail`, {
+      const res = await axios.post(`${API}/api/sendMail`, {
         name: user?.user_name,
         email: user?.user_email,
         position: isJobData.job_desigination,

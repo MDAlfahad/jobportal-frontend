@@ -17,7 +17,9 @@ const CompanySignupPage = () => {
   }
 
 
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
+  
 
   const [isSignup, setIsSignup] = useState({
     name: "",
@@ -38,7 +40,7 @@ const CompanySignupPage = () => {
 
     try {
       const signup = await axios.post(
-        `${API_CALL}/api/register_company`,
+        `${API}/api/register_company`,
         isSignup,
       );
       console.log(signup.data);

@@ -8,7 +8,9 @@ import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import Dummy from "../../images/dummyimage.png";
 
 const Navbar = ({}) => {
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   // ------ toggle button
   const [isClick, setIsClick] = useState(false);
@@ -138,7 +140,7 @@ const Navbar = ({}) => {
             ) : (
               <img
                 src={
-                  user?.user_image? `${API_CALL}/uploads/${user?.user_image}`: Dummy}
+                  user?.user_image? `${API}/uploads/${user?.user_image}`: Dummy}
                 alt=""
                 className="w-10 h-10 object-cover"
               />

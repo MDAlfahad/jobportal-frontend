@@ -4,7 +4,7 @@ import CrauselCard from "../../Components/Cards/CrauselCard";
 import useAnimate from "../../../Store/animation";
 
 const CrauselContainer = () => {
-  const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
 
   const [data, setData] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -35,7 +35,7 @@ const CrauselContainer = () => {
   };
 
   useEffect(() => {
-    fetch(`${API_CALL}/api/jobdata`)
+    fetch(`${API}/api/jobdata`)
       .then((res) => res.json())
       .then((result) => setData(result))
       .catch((err) => console.error(err));

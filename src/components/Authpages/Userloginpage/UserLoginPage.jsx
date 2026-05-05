@@ -22,7 +22,8 @@ const UserLoginPage = () => {
     type: "",
   });
 
-  const API_CALL = `http://localhost:4000`
+  // const API_CALL = `http://localhost:4000`
+  const API = import.meta.env.VITE_API_URL;
 
 
   const handlelogin = async (e) => {
@@ -43,7 +44,7 @@ const UserLoginPage = () => {
 
         
       }
-      const login = await axios.post(`${API_CALL}/api/login_users`, {
+      const login = await axios.post(`${API}/api/login_users`, {
         email,
         password,
       });

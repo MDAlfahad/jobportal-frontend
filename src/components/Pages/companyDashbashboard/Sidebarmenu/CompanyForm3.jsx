@@ -7,7 +7,8 @@ import useAuthStore from "../../../../Store/userAuth";
 const CompanyForm3 = () => {
   //routing job post data;
 
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
   const{user} = useAuthStore();
 
   const [isForm, setIsForm] = useState({
@@ -43,7 +44,7 @@ const CompanyForm3 = () => {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.post(`${API_CALL}/api/postjob`, isForm, {
+      const res = await axios.post(`${API}/api/postjob`, isForm, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

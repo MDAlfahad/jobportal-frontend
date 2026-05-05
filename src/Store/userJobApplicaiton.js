@@ -2,7 +2,8 @@ import { create } from "zustand";
 import useAuthStore from "./userAuth";
 import axios from "axios";
 
-const API_CALL = `http://localhost:4000`;
+const API = import.meta.env.VITE_API_URL;
+
 const userJobApplicaiton = create((set, get) => ({
   applications: [],
   pagination: {},
@@ -15,7 +16,7 @@ const userJobApplicaiton = create((set, get) => ({
 
       const token = useAuthStore.getState().token;
 
-      const res = await axios.get(`${API_CALL}/api/my-applications`, {
+      const res = await axios.get(`${API}/api/my-applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

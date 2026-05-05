@@ -2,7 +2,7 @@ import { create } from "zustand";
 import axios from "axios";
 import useAuthStore from "./userAuth";
 
-const API_CALL = "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL;
 
 const useCompanyApplications = create((set) => ({
   applications: [],
@@ -16,7 +16,7 @@ const useCompanyApplications = create((set) => ({
       const token = useAuthStore.getState().token;
 
       const res = await axios.get(
-        `${API_CALL}/api/company-applications`,
+        `${API}/api/company-applications`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

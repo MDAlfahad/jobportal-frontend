@@ -15,7 +15,8 @@ const UserLSignupPage = () => {
   const showPassword = () => {
     setshow(!show);
   };
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -38,7 +39,7 @@ const UserLSignupPage = () => {
   const handlEvent = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`${API_CALL}/api/register_User`, formData, {
+      const res = await axios.post(`${API}/api/register_User`, formData, {
         headers: { "Content-Type": "application/json" },
       });
 

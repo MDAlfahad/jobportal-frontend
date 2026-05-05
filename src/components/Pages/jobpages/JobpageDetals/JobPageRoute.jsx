@@ -20,7 +20,8 @@ import useJobStore from "../../../../Store/jobStore";
 import userAuth from "../../../../Store/userAuth";
 
 const JobPageRoute = () => {
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
   const [job, setJob] = useState(null);
   const [ischange, setischange] = useState(true);
   const [isApply, setIsApply] = useState(false);
@@ -38,7 +39,7 @@ const JobPageRoute = () => {
     if (cached_job) {
       setJob(cached_job);
     } else {
-      fetch(`${API_CALL}/api/jobdata/${id}`)
+      fetch(`${API}/api/jobdata/${id}`)
         .then((res) => res.json())
         .then((result) => setJob(result))
         .catch((error) => {

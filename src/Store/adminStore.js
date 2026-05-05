@@ -1,6 +1,8 @@
 import axios from "axios";
 import { create } from "zustand";
 
+const API = import.meta.env.VITE_API_URL;
+
 const useAdminStore = create((set) => ({
   adminStats: {
     user: 0,
@@ -11,7 +13,7 @@ const useAdminStore = create((set) => ({
 
   fetchAdminStats: async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/user-count");
+      const res = await axios.get(`${API}/api/user-count`);
 
       set({
         adminStats: res.data.stats,

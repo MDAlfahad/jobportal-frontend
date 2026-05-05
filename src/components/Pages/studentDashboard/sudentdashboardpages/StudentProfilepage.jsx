@@ -7,7 +7,8 @@ import { useEffect } from "react";
 import useAuthStore from "../../../../Store/userAuth";
 import Dummy from "../../../images/dummyimage.png";
 const StudentProfilePage = () => {
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
 
   const [EditShow, EditSetShow] = useState(false);
   const [editbio, seteditbio] = useState(false);
@@ -31,7 +32,7 @@ const StudentProfilePage = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post(`${API_CALL}/api/user-details`, isData);
+      const res = await axios.post(`${API}/api/user-details`, isData);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +53,7 @@ const StudentProfilePage = () => {
     formData.append("userId", user?.user_id);
 
     try {
-      const res = await axios.post(`${API_CALL}/api/upload_photo`, formData, {
+      const res = await axios.post(`${API}/api/upload_photo`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

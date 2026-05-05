@@ -1,7 +1,10 @@
 import { create } from "zustand";
 import axios from "axios";
 
+const API = import.meta.env.VITE_API_URL;
+
 const userDetaiilStore = create((set) => ({
+
   users: [],
   companies: [],
   loading: false,
@@ -11,7 +14,7 @@ const userDetaiilStore = create((set) => ({
     try {
       set({ loading: true });
 
-      const res = await axios.get("http://localhost:4000/api/all-users");
+      const res = await axios.get(`${API}/api/all-users`);
       set({
         users: res.data.users,
         loading: false,

@@ -9,7 +9,8 @@ const DashboardApplicantPage = () => {
   const [changevalue, setchangevalue] = useState(false);
   const { applications, fetchCompanyApplications } = useCompanyApplications();
   const [status, setStatus] = useState({});
-  const API_CALL = `http://localhost:4000`;
+  // const API_CALL = `http://localhost:4000`;
+  const API = import.meta.env.VITE_API_URL;
   const { token, isAuthenticated } = useAuthStore();
 
   
@@ -23,7 +24,7 @@ const DashboardApplicantPage = () => {
   const updateStatus = async (id, value) => {
     try {
       await axios.put(
-        `${API_CALL}/api/update-status/${id}`,
+        `${API}/api/update-status/${id}`,
         { status: value },
         {
           headers: {
@@ -78,7 +79,7 @@ const DashboardApplicantPage = () => {
                     </td>
                     <td>
                       <a
-                        href={`http://localhost:4000/uploads/${item.resume_path}`}
+                        href={`${API}/uploads/${item.resume_path}`}
                         target="_blank"
                         className="flex items-center gap-2 justify-center underline hover:bg-secondary hover:text-white border border-secondary py-0.5 rounded-sm  text-secondary"
                       >

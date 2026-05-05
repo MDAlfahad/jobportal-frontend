@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "../../../Components/buttons/ButtonComponents";
 
 const CompanyFrom = () => {
+  const API = import.meta.env.VITE_API_URL;
   const { user } = useAuthStore();
   const [image, setImage] = useState(null);
   const [data, setdata] = useState({
@@ -35,7 +36,7 @@ const CompanyFrom = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:4000/api/companyDetails`,
+        `${API}/api/companyDetails`,
         formData,
       );
       alert("Form Submited");
