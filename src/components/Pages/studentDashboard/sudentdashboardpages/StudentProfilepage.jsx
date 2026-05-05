@@ -59,7 +59,14 @@ const StudentProfilePage = () => {
         },
       });
 
-      alert("Photo Uploaded");
+        useAuthStore.setState((state) => ({
+      user: {
+        ...state.user,
+        user_image: res.data.imageUrl.split("/uploads/")[1], 
+      },
+    }));
+
+    alert("Photo Uploaded Successfully");
     } catch (error) {
       console.log(error);
     }
@@ -161,7 +168,7 @@ const StudentProfilePage = () => {
                   className="w-full h-full object-cover"
                   src={
                     user?.user_image
-                      ? `${API}/uploads/${user.user_image}`
+                      ? `${API}/uploads/${user.user_image}?t=${Date.now()}`
                       : Dummy
                   }
                   alt="profile"
