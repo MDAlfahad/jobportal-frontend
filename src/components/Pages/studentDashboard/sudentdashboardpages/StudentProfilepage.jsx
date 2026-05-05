@@ -161,7 +161,7 @@ const StudentProfilePage = () => {
                   className="w-full h-full object-cover"
                   src={
                     user?.user_image
-                      ? `${API_CALL}/uploads/${user.user_image}`
+                      ? `${API}/uploads/${user.user_image}`
                       : Dummy
                   }
                   alt="profile"
