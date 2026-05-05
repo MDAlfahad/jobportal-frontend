@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_BASE = "http://localhost:4000";
+// const API_BASE = "http://localhost:4000";
+const API = import.meta.env.VITE_API_URL;
 
 const useJobStore = create((set, get) => ({
   jobs: [],
@@ -23,6 +24,7 @@ const useJobStore = create((set, get) => ({
         loading: true,
         error: null,
       });
+      
 
       const isCompanyUser = token && role !== "admin";
 
@@ -30,7 +32,7 @@ const useJobStore = create((set, get) => ({
         ? "/api/jobpostdata"
         : "/api/jobdata";
 
-      const res = await axios.get(`${API_BASE}${endpoint}`, {
+      const res = await axios.get(`${API}${endpoint}`, {
         ...(isCompanyUser && {
           headers: {
             Authorization: `Bearer ${token}`,
