@@ -8,7 +8,7 @@ import useAuthStore from "../../../Store/userAuth";
 import Errorcard from "../ErrorCard";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import ErrorImage from "../../images/error.png"
-import GreenTick from "../../images/GreenTick.png"
+import GreenTick from "../../images/greenTick.png"
 
 
 const UserLSignupPage = () => {
