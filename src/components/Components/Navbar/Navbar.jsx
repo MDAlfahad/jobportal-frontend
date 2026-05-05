@@ -186,6 +186,9 @@ const Navbar = ({}) => {
             )}
           </div>
         </div>
+        
+        
+        {/* mobilemenu */}
 
         <div
           className={`flex flex-col bg-white w-full top-full left-0 px-4 py-2 z-50 md:hidden absolute overflow-hidden transition-all duration-500
@@ -209,12 +212,7 @@ const Navbar = ({}) => {
           >
             Contact
           </Link>
-          <Link
-            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-secondary px-4 py-2"
-            to={"/login-page"}
-          >
-            Login
-          </Link>
+      
         </div>
       </div>
     </div>
