@@ -1,7 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { UserRound, Bell, User } from "lucide-react";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useAuthStore from "../../../Store/userAuth";
 import useThemeStore from "../../../Store/lightDarkmode";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
@@ -10,6 +10,7 @@ import Dummy from "../../images/dummyimage.png";
 const Navbar = ({}) => {
   // const API_CALL = `http://localhost:4000`;
   const API = import.meta.env.VITE_API_URL;
+  const dropdownRef = useRef();
 
   const navigate = useNavigate();
   // ------ toggle button
@@ -40,9 +41,27 @@ const Navbar = ({}) => {
   const [isUser, setIsUser] = useState(false);
   const { theme, toggleTheme } = useThemeStore();
 
+  // drop down menu 
   const userclick = () => {
     setIsUser((show) => !show);
   };
+
+  useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (
+      dropdownRef.current &&
+      !dropdownRef.current.contains(event.target)
+    ) {
+      setIsUser(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   // -----login status---
 
@@ -154,6 +173,7 @@ const Navbar = ({}) => {
           </div>
         </div>
         <div
+        ref={dropdownRef}
           className={`absolute top-full right-5 shadow-lg border border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
         >
           <div className=" flex flex-col text-center bg-white dark:bg-black text-sm">
