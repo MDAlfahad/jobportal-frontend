@@ -26,7 +26,7 @@ const CrauselCard = ({
           {job_skills}
         </div>
         <div className="flex gap-5 items-center text-secondary hover:text-textcolor dark:hover:text-white transition scale-100 duration-300">
-          <p className="mt-auto text-[12px] xl:text-lg ">
+          <p className="mt-auto text-[12px]  ">
             Learn More
           </p>
           <ArrowRight strokeWidth={1.5} size={20}/>

@@ -6,6 +6,8 @@ import useAuthStore from "../../../Store/userAuth";
 import useThemeStore from "../../../Store/lightDarkmode";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import Dummy from "../../images/dummyimage.png";
+import Button from "../buttons/ButtonComponents";
+
 
 const Navbar = ({}) => {
   // const API_CALL = `http://localhost:4000`;
@@ -70,9 +72,9 @@ const Navbar = ({}) => {
 
   return (
     <div
-      className={`w-full fixed z-50 transition-all duration-300 ${scroll ? "bg-white border dark:bg-black dark:border-black dark:text-white" : "bg-transparent border border-transparent"}`}
+      className={`w-full fixed z-50 transition-all duration-300 ${scroll ? "bg-white border shadow-sm  dark:bg-black dark:border-black dark:text-white" : "bg-transparent border border-transparent"}`}
     >
-      <div className="max-w-[1800px] m-auto px-6 md:px-12 py-4 text-textcolor dark:text-white flex justify-between items-center relative">
+      <div className="max-w-[1800px] m-auto px-6 md:px-12 py-[15px] text-textcolor dark:text-white flex justify-between items-center relative">
         <div className="flex gap-5 lg:gap-20 items-center">
           <h1
             className="text-2xl lg:text-3xl font-bold cursor-pointer"
@@ -80,7 +82,7 @@ const Navbar = ({}) => {
           >
             JOB PORTAL
           </h1>
-
+            {/* Desktop nav  */}
           <div className="hidden md:flex gap-5 lg:gap-10">
             <NavLink
               className={({ isActive }) =>
@@ -121,7 +123,7 @@ const Navbar = ({}) => {
         </div>
 
         <div className="flex items-center gap-6">
-          <span
+          {/* <span
             onClick={toggleTheme} 
             className="cursor-pointer p-2   border  rounded-full bg-lightblue"
           >
@@ -130,15 +132,14 @@ const Navbar = ({}) => {
             ) : (
               <IoMdSunny className="text-black" />
             )}
-          </span>
+          </span> */}
 
             {!isAuthenticated && (
-            <NavLink
-              to={"/login-page"}
-              className="hidden md:flex items-center gap-1 px-6 py-2 bg-secondary rounded-md text-md font-bold text-white"
-            >
-              LOGIN
-            </NavLink>
+              <div className="hidden md:block"><Button
+              text="Sign Up"
+              onClick = {()=>navigate("login-page")}
+              /></div>
+           
           )}
           {/* <div
             className="md:block bg-lightblue p-2 text-textcolor rounded-full cursor-pointer hover:bg-white hover:text-secondary transition duration-300"
@@ -148,11 +149,11 @@ const Navbar = ({}) => {
           </div> */}
           <div
             onClick={userclick}
-            className={
-              !role
-                ? "md:block bg-lightblue p-2 border border-white text-textcolor rounded-full cursor-pointer hover:bg-white hover:border hover:border-secondary hover:text-secondary transition overflow-hidden"
-                : "md:block bg-lightblue  text-textcolor rounded-full cursor-pointer hover:bg-white hover:text-secondary transition overflow-hidden"
-            }
+            className={`md:block bg-lightblue text-textcolor border-2 border-lightblue rounded-full cursor-pointer hover:bg-white hover:text-secondary transition overflow-hidden
+              ${!role
+                ? " p-2"
+                : " bg-lightblue"
+            }`}
           >
             {!role ? (
               <UserRound strokeWidth={1.5} />
@@ -174,11 +175,14 @@ const Navbar = ({}) => {
         </div>
         <div
         ref={dropdownRef}
-          className={`absolute top-full right-5 shadow-lg border border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
+          className={`absolute top-full right-16 md:right-5 shadow-lg border border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
         >
           <div className=" flex flex-col text-center bg-white dark:bg-black text-sm">
             {!isAuthenticated ? (
-              ""
+              <p 
+              className="md: hidden px-4 py-2 hover:bg-secondary hover:text-white "
+              onClick={()=> navigate("login-page")}
+              >Sign Up</p>
             ) : (
               <Link
                 to={
@@ -188,8 +192,9 @@ const Navbar = ({}) => {
                       ? "/Dashboard-Company"
                       : "/student-Dashboard"
                 }
-                className="px-4 py-2 hover:bg-secondary hover:text-white "
+                
                 onClick={() => setIsClick(false)}
+                className="px-4 py-2 hover:bg-secondary hover:text-white "  
               >
                 DashBoard
               </Link>
@@ -211,23 +216,23 @@ const Navbar = ({}) => {
         {/* mobilemenu */}
 
         <div
-          className={`flex flex-col bg-white w-full top-full left-0 px-4 py-2 z-50 md:hidden absolute overflow-hidden transition-all duration-500
+          className={`flex flex-col bg-lightblue w-full top-full left-0 px-4 py-2 z-50 md:hidden absolute overflow-hidden transition-all duration-500 dark:bg-secondary 
     ${isClick ? "max-h-96 opacity-100 translate-y-0" : "max-h-0 opacity-0 -translate-y-2"}`}
         >
           <Link
-            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-secondary px-4 py-2"
+            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-textcolor  px-4 py-2 dark:text-white"
             to="/"
           >
             Home
           </Link>
           <Link
-            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-secondary px-4 py-2"
+            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-textcolor px-4 py-2 dark:text-white"
             to="/job-page"
           >
             job
           </Link>
           <Link
-            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-secondary px-4 py-2"
+            className="text-textcolor font-medium hover:text-white transition-all duration-300 hover:bg-textcolor px-4 py-2 dark:text-white"
             to="/contact"
           >
             Contact

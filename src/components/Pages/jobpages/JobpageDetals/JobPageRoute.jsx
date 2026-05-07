@@ -98,7 +98,7 @@ const JobPageRoute = () => {
               </div>
 
               {/* DETAILS GRID */}
-              <div className="grid grid-cols-2 md:flex justify-between gap-4 text-sm md:text-base ">
+              <div className="grid grid-cols-2 py-6 md:flex justify-between gap-4 text-sm md:text-base ">
 
                 <div className="text-center">
                   <span className="flex items-center gap-1 justify-center">
@@ -219,14 +219,14 @@ const JobPageRoute = () => {
             </div>
 
             {/* APPLY BUTTON */}
-            <div className="flex justify-center">
+            {/* <div className="flex justify-center">
               <Button
                 text="Apply Now"
                 onClick={() =>
                   user ? setIsApply(!isApply) : navigate("/login-page")
                 }
               />
-            </div>
+            </div> */}
           </div>
         </div>
 

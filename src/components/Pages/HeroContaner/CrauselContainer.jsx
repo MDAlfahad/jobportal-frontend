@@ -56,14 +56,14 @@ const CrauselContainer = () => {
           Apply Now to Start
           <span className="text-secondary "> Your Career</span>
         </h1>
-        <p className="text-center text-[14px]">
+        <p className="text-center text-[14px] py-4">
           Take the first step toward a successful future.{" "}
         </p>
       </div>
 
       <div
         ref={ref.box}
-        className="flex items-center justify-center w-full max-w-8xl mx-auto"
+        className="flex items-center justify-center w-full max-w-7xl 2xl:max-w-8xl mx-auto"
       >
         {/* LEFT BUTTON */}
         <button
@@ -76,7 +76,7 @@ const CrauselContainer = () => {
         
         <div className="overflow-hidden w-full">
           <div
-            className="flex transition-transform duration-500 ease-in-out gap-4"
+            className="flex justify-center items-center transition-transform duration-500 ease-in-out gap-4"
             style={{
               transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
             }}
@@ -101,7 +101,7 @@ const CrauselContainer = () => {
       </div>
 
       {/* MOBILE DOTS */}
-      <div className="flex justify-center mt-6 gap-2 sm:hidden">
+      <div className="flex justify-center my-6 gap-2 sm:hidden">
         {Array.from({ length: maxIndex + 1 }).map((_, i) => (
           <div
             key={i}

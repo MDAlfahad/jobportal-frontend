@@ -58,11 +58,19 @@ const StudentProfilePage = () => {
           "Content-Type": "multipart/form-data",
         },
       });
+      if(res.data.success){
+          const { token, setAuth } = useAuthStore.getState();
+        const updateuser = {
+          ...user,
+          user_image : res.data.file
+        }
+         setAuth(updatedUser, useAuthStore.getState().token);
+      }
 
-      alert("Photo Uploaded");
+       alert("Photo Uploaded Successfully");
     } catch (error) {
       console.log(error);
-    }
+    } 
   };
 
   return (
@@ -161,7 +169,7 @@ const StudentProfilePage = () => {
                   className="w-full h-full object-cover"
                   src={
                     user?.user_image
-                      ? `${API}/uploads/${user.user_image}`
+                      ? `${API}/uploads/${user.user_image}?t=${Date.now()}`
                       : Dummy
                   }
                   alt="profile"

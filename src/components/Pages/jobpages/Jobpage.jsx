@@ -56,7 +56,7 @@ const JobPage = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <Search className=" h-full w-10 p-2 text-textcolor" />
+            <Search className=" w-10 p-2 text-textcolor" />
           </div>
 
           <button
@@ -67,9 +67,9 @@ const JobPage = () => {
           </button>
         </div>
 
-        <div className="md:flex justify-center items-center ">
+        <div className="md:flex  ">
           <div
-            className={`flex flex-col gap-5 items-center justify-center overflow-hidden w-full md:w-[400px] xl:w-[600px]  border px-4 py-4 rounded-xl md:h-screen max-h-[80vh] md:mt-20 dark:bg-gray-900 dark:text-white dark:border-none
+            className={`flex flex-col gap-5 items-center overflow-hidden w-full md:w-[400px] xl:w-[600px] border px-4 py-4 rounded-xl h-[500px] dark:bg-gray-900 dark:text-white mt-20 dark:border-none
             ${
               showFilter
                 ? "fixed inset-0 bg-white z-50 md:relative"
@@ -84,7 +84,7 @@ const JobPage = () => {
               </h1>
               <button onClick={() => setShowFilter(false)}>✕</button>
             </div>
-
+            
             <h1 className="hidden md:flex items-center gap-2 lg:text-xl ">
               <Funnel className="text-secondary" />
               Filter
@@ -145,10 +145,10 @@ const JobPage = () => {
                   Annual Salary (in lakhs)
                 </h1>
 
-                <div className="relative w-full px-2">
+                <div className="relative w-full px-2 py-4">
                   
                   <div
-                    className="absolute -top-10 bg-secondary text-white text-md px-2 py-1 rounded-sm transition-all duration-200"
+                    className="absolute -top-4 bg-secondary text-white text-md px-2  py-1 rounded-sm transition-all duration-200"
                     style={{
                       left: `calc(${(salary / 10) * 100}% -16px)`,
                     }}
@@ -196,9 +196,9 @@ const JobPage = () => {
               </button>
             </div>
           </div>
-
+                  
           {/*  JOB LIST  */}
-          <div className="flex flex-col md:px-10 items-center w-full overflow-y-auto h-[80vh] md:h-screen ">
+          <div className="flex flex-col md:px-10 items-center w-full overflow-y-auto h-[90vh] md:h-screen 2xl:h-auto ">
             <div className="text-center py-6 dark:text-white">
               <h1 className="text-2xl md:text-3xl font-semibold">
                 {filteredJobs.length}+ Jobs Posted

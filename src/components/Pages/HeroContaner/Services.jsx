@@ -34,14 +34,14 @@ const Services = () => {
 
           <p
           ref={ref.para}
-          className="text-[14px] font-normal text-center">
+          className="text-[14px] font-normal py-4 text-center">
             Career Services Connecting Talent with the Right Opportunities
           </p>
         </div>
 
         <div
         ref={ref.card}
-        className="w-full grid md:grid-cols-2 lg:grid-cols-3 ">
+        className="w-full md:flex justify-center  gap-12  ">
           <Cards
             logo={<HiClipboardList className="text-3xl text-secondary" />}
             h1="Verified Job Listings & Smart Job Matching"

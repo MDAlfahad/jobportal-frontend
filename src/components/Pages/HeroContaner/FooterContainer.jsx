@@ -9,10 +9,14 @@ import {
 } from "react-icons/sl";
 import { IoMailOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import DarkLightComponent from "../../Components/buttons/DarkLightComponent";
+import useThemeStore from "../../../Store/lightDarkmode";
+
 
 const FooterContainer = () => {
   const API = import.meta.env.VITE_API_URL;
   const [email, setEmail] = useState("");
+  const{theme} = useThemeStore();
 
   const apply = async (e) => {
     e.preventDefault();
@@ -88,9 +92,9 @@ const FooterContainer = () => {
                 </a>
               </span>
             </div>
-            <div className="flex border rounded-sm items-center overflow-hidden">
+            <div className="flex border rounded-sm  items-center overflow-hidden">
               <input
-                className="px-4 py-2 outline-none w-full"
+                className="px-4 py-2 outline-secondary w-full"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -104,6 +108,10 @@ const FooterContainer = () => {
               >
                 Subscribe
               </a>
+            </div>
+            <div className=" flex items-center py-2  gap-2 ">
+              <DarkLightComponent/>
+              <p className="text-[14px] ">{theme == "light" ? "Dark Mode": "Light Mode"}</p>
             </div>
           </div>
           <div className="flex gap-16 md:gap-20 py-2 md:py-0">

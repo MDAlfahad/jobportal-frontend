@@ -21,16 +21,16 @@ const StillThink = () => {
     <>
       <div 
       
-      className="still_background w-full px-4 lg:px-12 pt-6 xl:pt-14   md:flex justify-between items-center dark:text-white text-black select-none max-w-[1800px] m-auto">
-        <div className="flex flex-col gap-2">
+      className="still_background w-full px-4 lg:px-12 2xl:py-80 py-10 flex items-center md:h-[100vh] 2xl:h-auto dark:text-white text-black select-none max-w-[1800px] m-auto">
+        <div className="flex flex-col gap-2 ">
           <h1 
           ref={ref.head}
           className="text-3xl md:text-4xl xl:text-6xl font-bold py-4">
-            Still Thinking ? Why Don’t You Apply
+            Still Thinking ? <br /> Why Don’t You Apply
           </h1>
           <p
           ref={ref.para}
-          className="text-[12px] lg:text-[14px]">
+          className="text-[12px] lg:text-[14px] max-w-[700px]">
             "Stop just thinking—start applying! Our job portal connects you with
             opportunities tailored to your skills and ambitions. Whether you're
             exploring new career paths or aiming for your dream role, we make
@@ -46,9 +46,7 @@ const StillThink = () => {
           ref={ref.quoit}
           className="xl:mt-20 text-[12px] lg:text-[14px]">Don’t just dream about success—apply for it</p>
         </div>
-        <div>
-          <img src={RightImage} width={1400} alt="" />
-        </div>
+        
       </div>
     </>
   );

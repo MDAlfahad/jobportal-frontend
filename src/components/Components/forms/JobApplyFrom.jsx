@@ -163,20 +163,20 @@ const JobApplyForm = ({ className, onClose }) => {
             </div>
             <div className="md:flex gap-6">
               <div className="flex gap-6">
-                <span className="flex gap-2 rounded-full items-center px-2 bg-green-200 text-green-500 ">
-                  <History size={16} strokeWidth={1.5} />
+                <div className="flex gap-2 rounded-sm items-center px-2 text-[14px] bg-green-200 text-green-500 ">
+                  <History size={16}  strokeWidth={1.5} />
                   {formattedDate}
-                </span>
-                <span className="flex text-sm items-center gap-2 px-2 bg-orange-200 text-orange-800 rounded-full">
+                </div>
+                <span className="flex items-center gap-2 px-2 text-[14px] bg-orange-200 text-orange-800 rounded-sm">
                   <FaSuitcase size={16} strokeWidth={1.5} />
                   Job Offring upto 6LPA
                 </span>
               </div>
-              <div className="flex gap-6  mt-4">
-                <span className="flex  text-sm items-center px-2  rounded-full border  bg-gray-100 border-0.5 dark:bg-gray-900">
+              <div className="flex gap-6">
+                <span className="flex  text-[12px] items-center px-2  rounded-sm border  bg-gray-100 border-0.5 dark:bg-gray-900">
                   {isJobData.job_type}
                 </span>
-                <span className="flex text-sm items-center px-2  rounded-full border bg-gray-100 border-0.5 dark:bg-gray-900">
+                <span className="flex text-[14px] items-center px-2  rounded-sm border bg-gray-100 border-0.5 dark:bg-gray-900">
                   vacancies
                 </span>
               </div>

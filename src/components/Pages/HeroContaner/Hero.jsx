@@ -30,10 +30,10 @@ const Hero = () => {
     <>
       <div className="w-full max-w-[1800px] m-auto mainbackground noselect capitalize dark:text-white">
         <div className="w-full md:px-4 lg:px-12 py-4 md:py-6 lg:py-10 px-4 text-center flex flex-col justify-center  lg:h-auto">
-          <div className="flex flex-col items-center py-20">
+          <div className="flex flex-col items-center py-28">
             <h1
             ref={ref.head}
-            className="text-4xl md:text-4xl lg:text-6xl font-semibold pt-20 leading-none">
+            className="text-4xl md:text-4xl lg:text-6xl 2xl:text-7xl font-semibold pt-20 leading-none">
               Your Journey Never ends, <br />
               Get Your Job Now
             </h1>
@@ -42,15 +42,13 @@ const Hero = () => {
             className="text-sm md:text-[12px] lg:text-[14px]  text-textcolor max-w-[800px] pt-4 dark:text-white">
               The Placement Cell plays a vital role in shaping students’ careers
               by acting as a bridge between students and recruiters. It
-              organizes campus recruitment drives, internships, skill
-              development programs, mock interviews, resume-building <br />{" "}
-              workshops, and career counseling sessions to prepare students for
+              organizes campus recruitment drives, internships to prepare students for
               the professional world.
             </p>
             <div 
             ref={ref.box}
             className="md:w-[600px] py-6">
-              <span className="border border-secondary rounded-sm overflow-hidden w-full flex">
+              {/* <span className="border border-secondary rounded-sm overflow-hidden w-full flex">
                 <input
                   type="serach"
                   id="searchbar"
@@ -60,7 +58,7 @@ const Hero = () => {
                 <button className="bg-secondary px-6 text-white text-[14px] font-medium hover:bg-textcolor transition duration-200">
                   Search
                 </button>
-              </span>
+              </span> */}
             </div>
             <div
             ref={ref.button}
