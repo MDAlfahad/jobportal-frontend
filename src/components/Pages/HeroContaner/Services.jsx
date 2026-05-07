@@ -43,7 +43,7 @@ const Services = () => {
         ref={ref.card}
         className="w-full md:flex justify-center  gap-12  ">
           <Cards
-            logo={<HiClipboardList className="text-3xl text-secondary" />}
+            logo={<HiClipboardList className="text-4xl text-secondary" />}
             h1="Verified Job Listings & Smart Job Matching"
             p="Access thousands of trusted job opportunities from top companies across various industries. Our intelligent matching system connects you with roles that fit your skills, experience, and career goals."
             text="Apply now"
