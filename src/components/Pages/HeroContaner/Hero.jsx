@@ -11,6 +11,7 @@ import { useRef } from "react";
 import useAnimate from "../../../Store/animation";
 import CompanyApplyPage from "./CompanyApplyPage";
 import Traker from "./Tracker";
+import MotivatePage from "./MotivatePage";
 
 const Hero = () => {
    const ref = {
@@ -74,6 +75,7 @@ const Hero = () => {
       <CrauselContainer />
       {/* <AnimatedCard/> */}
       <Traker/>
+      <MotivatePage/>
       <CompanyApplyPage/>
       <FooterContainer />
     </>

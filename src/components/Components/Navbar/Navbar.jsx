@@ -9,7 +9,7 @@ import Dummy from "../../images/dummyimage.png";
 import Button from "../buttons/ButtonComponents";
 
 
-const Navbar = ({}) => {
+const Navbar = ({ }) => {
   // const API_CALL = `http://localhost:4000`;
   const API = import.meta.env.VITE_API_URL;
   const dropdownRef = useRef();
@@ -49,21 +49,21 @@ const Navbar = ({}) => {
   };
 
   useEffect(() => {
-  const handleClickOutside = (event) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target)
-    ) {
-      setIsUser(false);
-    }
-  };
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        setIsUser(false);
+      }
+    };
 
-  document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   // -----login status---
 
@@ -82,12 +82,13 @@ const Navbar = ({}) => {
           >
             JOB PORTAL
           </h1>
-            {/* Desktop nav  */}
+          {/* Desktop nav  */}
+
+          {user?.auth_role === "admin" || user?.auth_role === "company" ? "": 
           <div className="hidden md:flex gap-5 lg:gap-10">
             <NavLink
               className={({ isActive }) =>
-                `relative px-2  ${
-                  isActive ? "text-secondary after:w-full" : "after:w-0"
+                `relative px-2  ${isActive ? "text-secondary after:w-full" : "after:w-0"
                 } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
               }
               to="/"
@@ -96,10 +97,9 @@ const Navbar = ({}) => {
             </NavLink>
             <NavLink
               className={({ isActive }) =>
-                `relative px-2  ${
-                  isActive
-                    ? "text-secondary after:w-full duration-300"
-                    : "after:w-0"
+                `relative px-2  ${isActive
+                  ? "text-secondary after:w-full duration-300"
+                  : "after:w-0"
                 } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
               }
               to="/job-page"
@@ -109,37 +109,27 @@ const Navbar = ({}) => {
 
             <NavLink
               className={({ isActive }) =>
-                `relative px-2 ${
-                  isActive
-                    ? "text-secondary after:w-full transition-all duration-300"
-                    : "after:w-0 "
+                `relative px-2 ${isActive
+                  ? "text-secondary after:w-full transition-all duration-300"
+                  : "after:w-0 "
                 } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all duration-300`
               }
               to="/contact"
             >
               Contact
             </NavLink>
-          </div>
+          </div>}
         </div>
 
-        <div className="flex items-center gap-6">
-          {/* <span
-            onClick={toggleTheme} 
-            className="cursor-pointer p-2   border  rounded-full bg-lightblue"
-          >
-            {theme === "light" ? (
-              <IoMdMoon className="border" />
-            ) : (
-              <IoMdSunny className="text-black" />
-            )}
-          </span> */}
 
-            {!isAuthenticated && (
-              <div className="hidden md:block"><Button
+        <div className="flex items-center gap-6">
+
+          {!isAuthenticated && (
+            <div className="hidden md:block"><Button
               text="Sign Up"
-              onClick = {()=>navigate("login-page")}
-              /></div>
-           
+              onClick={() => navigate("login-page")}
+            /></div>
+
           )}
           {/* <div
             className="md:block bg-lightblue p-2 text-textcolor rounded-full cursor-pointer hover:bg-white hover:text-secondary transition duration-300"
@@ -153,14 +143,14 @@ const Navbar = ({}) => {
               ${!role
                 ? " p-2"
                 : " bg-lightblue"
-            }`}
+              }`}
           >
             {!role ? (
               <UserRound strokeWidth={1.5} />
             ) : (
               <img
                 src={
-                  user?.user_image? `${API}/uploads/${user?.user_image}`: Dummy}
+                  user?.user_image ? `${API}/uploads/${user?.user_image}` : Dummy}
                 alt=""
                 className="w-10 h-10 object-cover"
               />
@@ -174,14 +164,14 @@ const Navbar = ({}) => {
           </div>
         </div>
         <div
-        ref={dropdownRef}
+          ref={dropdownRef}
           className={`absolute top-full right-16 md:right-5 shadow-lg border border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
         >
           <div className=" flex flex-col text-center bg-white dark:bg-black text-sm">
             {!isAuthenticated ? (
-              <p 
-              className="md: hidden px-4 py-2 hover:bg-secondary hover:text-white "
-              onClick={()=> navigate("login-page")}
+              <p
+                className="md: hidden px-4 py-2 hover:bg-secondary hover:text-white "
+                onClick={() => navigate("login-page")}
               >Sign Up</p>
             ) : (
               <Link
@@ -192,15 +182,15 @@ const Navbar = ({}) => {
                       ? "/Dashboard-Company"
                       : "/student-Dashboard"
                 }
-                
+
                 onClick={() => setIsClick(false)}
-                className="px-4 py-2 hover:bg-secondary hover:text-white "  
+                className="px-4 py-2 hover:bg-secondary hover:text-white "
               >
                 DashBoard
               </Link>
             )}
             {!isAuthenticated ? (
-              null
+              ""
             ) : (
               <p
                 className="px-4 py-2 hover:bg-secondary hover:text-white "
@@ -211,8 +201,8 @@ const Navbar = ({}) => {
             )}
           </div>
         </div>
-        
-        
+
+
         {/* mobilemenu */}
 
         <div
@@ -237,7 +227,7 @@ const Navbar = ({}) => {
           >
             Contact
           </Link>
-      
+
         </div>
       </div>
     </div>

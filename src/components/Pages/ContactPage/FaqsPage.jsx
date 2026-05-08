@@ -22,7 +22,7 @@ const FaqsPage = () => {
         </p>
       </div>
 
-      <div ref={ref.box} className=" md:flex justify-between  w-full py-10">
+      <div ref={ref.box} className=" md:flex justify-center gap-28  w-full py-10">
         <div className="flex flex-col py-4 gap-4  md:w-[500px] ">
           <FaqsCard
             question="Is it free to use?"
