@@ -24,7 +24,8 @@ const Navbar = ({ }) => {
     logout();
     navigate("/login-page");
   };
-
+  // scroll Animation
+  
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 200) {
@@ -36,6 +37,7 @@ const Navbar = ({ }) => {
     window.addEventListener("scroll", handlescroll);
     return () => window.removeEventListener("scroll", handlescroll);
   }, []);
+
   const toggle = () => {
     setIsClick((prev) => !prev);
   };
@@ -170,7 +172,7 @@ const Navbar = ({ }) => {
           <div className=" flex flex-col text-center bg-white dark:bg-black text-sm">
             {!isAuthenticated ? (
               <p
-                className="md: hidden px-4 py-2 hover:bg-secondary hover:text-white "
+                className="md:hidden px-4 py-2 hover:bg-secondary hover:text-white "
                 onClick={() => navigate("login-page")}
               >Sign Up</p>
             ) : (

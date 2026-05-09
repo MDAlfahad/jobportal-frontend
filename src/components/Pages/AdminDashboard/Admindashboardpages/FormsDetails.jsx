@@ -18,19 +18,19 @@ const FormsDetails = () => {
         </div>
         <div className="w-full border rounded-md overflow-hidden ">
           <table className="w-full text-sm">
-            <thead className="bg-gray-200 ">
+            <thead className="bg-gray-200 dark:bg-gray-900 dark:text-white">
               <tr>
-                <th className="py-2 text-textcolor font-medium">Email</th>
-                <th className="py-2 text-textcolor font-medium">
+                <th className="py-2 font-medium">Email</th>
+                <th className="py-2 font-medium">
                   Company name
                 </th>
-                <th className="py-2 text-textcolor font-medium">
+                <th className="py- font-medium">
                   Student Name
                 </th>
-                <th className="py-2 text-textcolor font-medium">
+                <th className="py-font-medium">
                   Apllication <br /> Status
                 </th>
-                <th className="py-2 font-medium text-textcolor">
+                <th className="py-2 font-medium">
                   Review <br /> applicaiton
                 </th>
               </tr>

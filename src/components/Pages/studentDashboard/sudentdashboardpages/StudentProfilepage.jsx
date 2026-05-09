@@ -58,26 +58,26 @@ const StudentProfilePage = () => {
           "Content-Type": "multipart/form-data",
         },
       });
-      if(res.data.success){
-          const { token, setAuth } = useAuthStore.getState();
+      if (res.data.success) {
+        const { token, setAuth } = useAuthStore.getState();
         const updateuser = {
           ...user,
-          user_image : res.data.file
-        }
-         setAuth(updatedUser, useAuthStore.getState().token);
+          user_image: res.data.file,
+        };
+        setAuth(updatedUser, useAuthStore.getState().token);
       }
 
-       alert("Photo Uploaded Successfully");
+      alert("Photo Uploaded Successfully");
     } catch (error) {
       console.log(error);
-    } 
+    }
   };
 
   return (
     <>
       <div className=" mt-10 md:mt-20 md:mx-10 relative">
         {/* edit profile card  */}
-        {EditShow && (  
+        {EditShow && (
           <div className="flex w-96 flex-col gap-4 absolute border p-4 rounded-xl bg-white top-32 right-1/3 shadow-xl  dark:bg-gray-900  dark:text-white">
             <div className="flex justify-between items-center">
               <h1 className="text-lg font-semibold">Edit Profile</h1>
@@ -162,11 +162,11 @@ const StudentProfilePage = () => {
           Profile <span className="text-secondary "> {user.user_name}</span>
         </h1>
         <div>
-          <div className="w-full md:flex px-6 py-2 lg:p-12 bg-white rounded-md md:rounded-xl justify-around dark:bg-gray-900 ">
-            <div className="flex flex-col items-center gap-2 ">
-              <div className=" md:w-[100px]  lg:w-[150px] lg:h-[150px] overflow-hidden bg-gray-200 rounded-lg object-cover">
+          <div className="w-full md:flex p-6 gap-10 bg-white rounded-md md:rounded-xl dark:bg-gray-900 ">
+            <div className="flex flex-col items-center justify-center gap-2 ">
+              <div className="w-[200px] h-[200px] md:w-[100px] lg:w-[150px] lg:h-[150px] overflow-hidden bg-gray-200 rounded-lg">
                 <img
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                   src={
                     user?.user_image
                       ? `${API}/uploads/${user.user_image}?t=${Date.now()}`
@@ -175,7 +175,7 @@ const StudentProfilePage = () => {
                   alt="profile"
                 />
               </div>
-              <div className="lg:flex items-center">
+              <div className="lg:flex items-center flex gap-2 py-2">
                 <input
                   type="file"
                   id="file"
@@ -184,14 +184,14 @@ const StudentProfilePage = () => {
                   onChange={handleImageChange}
                 />
                 <label
-                  className="text-md font-light border border-secondary text-secondary  px-2 py-1 rounded-md mr-2"
+                  className="border border-secondary text-secondary  px-1 py-1 text-[12px] rounded-md "
                   htmlFor="file"
                 >
                   Choose
                 </label>
                 <button
                   onClick={handleUpload}
-                  className="bg-secondary text-white px-2 py-1 rounded-md"
+                  className="bg-secondary text-white px-1 py-1 text-[12px] rounded-md"
                 >
                   Upload
                 </button>
@@ -199,42 +199,41 @@ const StudentProfilePage = () => {
             </div>
             <div>
               {/* profile  */}
-              <div className=" flex items-center justify-between  xl:mt-12 mb-2 md:mb-6">
+              <div className=" flex items-center justify-between ">
                 <h1 className="text-xl font-semibold">Personal Info</h1>
 
                 <span
-                  className="flex items-center gap-2 border rounded-md p-1 cursor-pointer "
+                  className="flex items-center text-[12px] gap-2 border rounded-md p-1 cursor-pointer bg-gray-50 dark:border-gray-500 dark:bg-transparent "
                   onClick={() => EditSetShow(!EditShow)}
                 >
                   <SquarePen strokeWidth={1.5} size={18} /> <p>Edit</p>
                 </span>
               </div>
-              <div className="lg:flex gap-8 items-center ">
-                <div>
-                  <label className="text-textcolor2" htmlFor="name">
-                    Name
-                  </label>
-                  <p className="capitalize">{user?.user_name}</p>
-                </div>
-                <div>
-                  <label className="text-textcolor2" htmlFor="email">
-                    Email
-                  </label>
-                  <p>{user?.user_email}</p>
-                </div>
-                <div>
-                  <label className="text-textcolor2" htmlFor="phone">
-                    Phone
-                  </label>
-                  <p>(+91) {user?.user_contact}</p>
-                </div>
-                <div>
-                  <label className="text-textcolor2" htmlFor="address">
-                    Address
-                  </label>
-                  <p>{user?.user_address}</p>
-                </div>
-              </div>
+              <div className="lg:flex flex-col ">
+                <label className="text-textcolor2" htmlFor="name">
+                  Name
+                </label>
+                
+                <input type="text" value={user?.user_name} className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary" />
+
+                <label className="text-textcolor2" htmlFor="email">
+                  Email
+                </label>
+                <input type="text" value={user?.user_email} className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary" />
+
+                <label className="text-textcolor2" htmlFor="phone">
+                  Phone
+                </label>
+              
+                <input type="text"
+                value={user?.user_contact} className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary" />
+
+                <label className="text-textcolor2" htmlFor="address">
+                  Address
+                </label>
+                <input type="text"
+                value={user?.user_address} className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary" />
+              </div>  
             </div>
           </div>
 
@@ -242,14 +241,14 @@ const StudentProfilePage = () => {
             <div className="flex justify-between">
               <h1 className="text-lg font-semibold">Bio</h1>
               <span
-                className="flex items-center gap-2 border rounded-md  p-1 cursor-pointer"
+                className="flex items-center gap-2 border rounded-md bg-gray-50 dark:bg-transparent  p-1 cursor-pointer"
                 onClick={() => seteditbio(!editbio)}
               >
-                <SquarePen strokeWidth={1.5} size={18} />
-                <p>Edit bio</p>
+                <SquarePen strokeWidth={1.5} size={16} />
+                <p >Edit bio</p>
               </span>
             </div>
-            <p className="my-2 ">
+            <p className="my-2  text-[14px]">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum
               quaerat fugiat, ipsum, dolores placeat eligendi deserunt
               asperiores cumque ex nostrum non earum. Voluptatibus error cum

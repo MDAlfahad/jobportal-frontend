@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../../Components/buttons/ButtonComponents";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
 
 
 const CompanySignupPage = () => {
@@ -57,8 +57,8 @@ const CompanySignupPage = () => {
   // const [password, setpassword] = useState("");
   return (
     <>
-      <div className="max-w-[1800px] m-auto  w-full noselect ">
-        <div className="w-full md:h-[100vh] lg:h-auto bg-secondary md:pt-20 md:flex justify-between px-4 md:px-12 items-center overflow-hidden dark:bg-black">
+      <div className="max-w-[1800px] m-auto  w-full noselect    ">
+        <div className="w-full md:h-[100vh] lg:h-auto bg-secondary py-10 md:pt-20 md:flex justify-between px-4 md:px-12 items-center overflow-hidden dark:bg-black">
           <div>
             <div className="mt-10">
               <h1 className="text-3xl md:text-4xl lg:text-6xl text-white font-semibold ">
@@ -76,10 +76,10 @@ const CompanySignupPage = () => {
           <div>
             <form
               onSubmit={handlesignup}
-              className=" p-6 w-[400px] flex flex-col text-[14px] text-textcolor bg-white rounded-md dark:bg-black dark:text-white "
+              className=" p-6 md:w-[400px] flex flex-col gap-2 text-[14px] text-textcolor bg-white rounded-md dark:bg-gray-900 dark:text-white "
             >
               <div className="flex flex-col items-center">
-                <p className="flex gap-4 items-center border px-2 py-2 w-full justify-center rounded-sm text-md font-semibold cursor-pointer ">
+                <p className="flex gap-4 items-center border px-2 py-2 w-full justify-center rounded-sm text-md font-semibold cursor-pointer dark:border-gray-700">
                   <FcGoogle className="text-2xl md:text-4xl" />
                   Login with google
                 </p>
@@ -93,7 +93,7 @@ const CompanySignupPage = () => {
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-[12px] font-medium">Name</label>
                 <input
-                  className="px-2 py-2 border rounded-sm bg-transparent outline-none text-[14px] placeholder "
+                  className="px-2 py-2 border rounded-sm bg-transparent outline-none text-[14px] placeholder dark:border-gray-700"
                   type="text"
                   name="name"
                   onChange={handleChange}
@@ -103,7 +103,7 @@ const CompanySignupPage = () => {
                 />
                 <label htmlFor="email"  className="text-[12px] font-medium">Offical email</label>
                 <input
-                  className="px-2 py-2 border rounded-sm outline-none dark:bg-black"
+                  className="px-2 py-2 border rounded-sm outline-none dark:bg-gray-900 dark:border-gray-700"
                   type="email"
                   id="email"
                   name="email"
@@ -113,7 +113,7 @@ const CompanySignupPage = () => {
                   required
                 />
                 <label htmlFor="password"  className="text-[12px] font-medium">Password</label>
-                <span className="flex px-2 border rounded-sm items-center">
+                <span className="flex px-2 border rounded-sm items-center dark:border-gray-700 ">
                   <input
                   className="px-2 py-2 outline-none bg-transparent w-full "
                   type={!show ? "password": "text"}
@@ -124,12 +124,12 @@ const CompanySignupPage = () => {
                   value={isSignup.password}
                   onChange={handleChange}
                 />
-                <p onClick={showPassword}>{!show ?  <IoIosEye size={22}/> : <IoIosEyeOff size={22}/> }</p>
+                <p onClick={showPassword}>{!show ?  <VscEye  size={22}/> : <VscEyeClosed  size={22}/> }</p>
                 </span>
 
                 <label htmlFor="number"  className="text-[12px] font-medium">Mobile number</label>
                 <input
-                  className="px-2 py-2 border rounded-sm outline-none dark:bg-black  "
+                  className="px-2 py-2 border rounded-sm outline-none dark:bg-gray-900 dark:border-gray-700"
                   type="tel"
                   name="mobilenumber"
                   value={isSignup.mobilenumber}
@@ -138,7 +138,7 @@ const CompanySignupPage = () => {
                 />
                 <Button text="Sign up" onclick="handlenavigate"/>
               </div>
-              <p className="text-sm md:text-[14px] py-4 text-center">
+              <p className="text-sm md:text-[12px] py-4 text-center">
                 Already have Account?
                 <Link className="text-secondary" to="/login-page">
                   Login

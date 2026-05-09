@@ -31,7 +31,7 @@ const userDetaiilStore = create((set) => ({
     try {
       set({ loading: true });
 
-      const res = await axios.get("http://localhost:4000/api/all-companies");
+      const res = await axios.get(`${API}/api/all-companies`);
 
       set({
         companies: res.data.companies,

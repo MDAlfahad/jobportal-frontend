@@ -9,7 +9,7 @@ const CompanyForm3 = () => {
 
   // const API_CALL = `http://localhost:4000`;
   const API = import.meta.env.VITE_API_URL;
-  const{user} = useAuthStore();
+  const{user, token} = useAuthStore();
 
   const [isForm, setIsForm] = useState({
     desigination: "",
@@ -32,7 +32,7 @@ const CompanyForm3 = () => {
     aboutcompany: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { 
     setIsForm({
       ...isForm,
       [e.target.id]: e.target.value,
@@ -43,7 +43,7 @@ const CompanyForm3 = () => {
     e.preventDefault();
 
     try {
-      const token = localStorage.getItem("token");
+      
       const res = await axios.post(`${API}/api/postjob`, isForm, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -52,13 +52,14 @@ const CompanyForm3 = () => {
       alert(res.data.message);
     } catch (err) {
       alert(err.response?.data?.message || "Failed to submit data");
+      console.log(err.response?.data?.message)
     }
   };
 
   return (
     <>
       <form
-        className="w-full lg:w-[900px] xl:w-full flex flex-col gap-2 items-center py-4 text-black text-[12px] lg:text-[14px]  dark:text-white"
+        className="w-full lg:w-[900px] xl:w-full flex flex-col gap-2 items-center py-4 text-black text-[12px] lg:text-[14px] dark:text-white "
         onSubmit={handlEvent}
       >
         <h1 className="text-xl md:text-4xl font-semibold my-10 text-black dark:text-white " >
@@ -68,20 +69,20 @@ const CompanyForm3 = () => {
         <div className="flex flex-col gap-2 border rounded-md p-4  w-full dark:bg-gray-900  dark:border-none">
           <label className="font-semibold " htmlFor="designation">
             Designation
-          </label>
+          </label>  
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2  dark:bg-transparent dark:border-gray-500 "
             id="desigination"
             type="text"
             value={isForm.desigination}
             placeholder="Designation"
             onChange={handleChange}
           />
-          <label className="font-semibold " htmlFor="companyname dark:backdrop-blur-xl dark:bg-white/20 dark:border-none">
+          <label className="font-semibold " htmlFor="companyname dark:bg-transparent dark:border-gray-500">
             ComapnyName
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             type="text"
             id="companyname"
             value={user.user_name}
@@ -93,15 +94,15 @@ const CompanyForm3 = () => {
           </label>
           <select
             id="locationtype"
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/30 dark:text-black dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500 "
             value={isForm.locationtype}
             onChange={handleChange}
             required
           >
-            <option value="select"></option>
-            <option value="workFromHome">Work form home</option>
-            <option value="remote">remote</option>
-            <option value="location">location</option>
+            <option className="dark:bg-gray-900 " >Select</option>
+            <option className="dark:bg-gray-900" value="workFromHome">Work form home</option>
+            <option className="dark:bg-gray-900" value="remote">remote</option>
+            <option className="dark:bg-gray-900" value="location">location</option>
           </select>
 
           <label htmlFor="jobtype" className="font-semibold ">
@@ -109,13 +110,13 @@ const CompanyForm3 = () => {
           </label>
           <select
             id="jobtype"
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             value={isForm.jobtype}
             onChange={handleChange}
           >
-            <option className="dark:text-black" value="select"></option>
-            <option className="dark:text-black" value="workFromHome">Intership</option>
-            <option className="dark:text-black" value="remote">Job</option>
+            <option className="dark:bg-gray-900" >Select</option>
+            <option className="dark:bg-gray-900" value="workFromHome">Intership</option>
+            <option className="dark:bg-gray-900" value="remote">Job</option>
           </select>
 
           <label htmlFor="worktype" className="font-semibold ">
@@ -123,28 +124,28 @@ const CompanyForm3 = () => {
           </label>
           <select
             id="worktype"
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20   dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             value={isForm.worktype}
             onChange={handleChange}
             required
           >
-            <option className="dark:text-black" value="select"></option>
-            <option className="dark:text-black" value="workFromHome">Part Time</option>
-            <option className="dark:text-black" value="remote">Full time</option>
+            <option className="dark:bg-gray-900" >Select</option>
+            <option className="dark:bg-gray-900" value="workFromHome">Part Time</option>
+            <option className="dark:bg-gray-900" value="remote">Full time</option>
           </select>
           <label className="font-semibold " htmlFor="location">
             Select Location
           </label>
           <select
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20    dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             id="location"
             value={isForm.location}
             onChange={handleChange}
           >
-            <option></option>
+            <option className="dark:bg-gray-900">Select</option>
             {Citydata &&
               Citydata.cities.map((item, index) => (
-                <option key={index} value={item.City} className="px-2 py-2 dark:text-black">
+                <option key={index} value={item.City} className="dark:bg-gray-900">
                   {item.City}
                 </option>
               ))}
@@ -154,7 +155,7 @@ const CompanyForm3 = () => {
             Start date
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             type="date"
             id="startdate"
             value={isForm.startdate}
@@ -165,7 +166,7 @@ const CompanyForm3 = () => {
             Anual CTC
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none "
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500 "
             type="text"
             placeholder="CTC amount"
             id="annualCTC"
@@ -177,7 +178,7 @@ const CompanyForm3 = () => {
             Experience
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             type="text"
             placeholder="Experience"
             id="experience"
@@ -189,7 +190,7 @@ const CompanyForm3 = () => {
             Add Certificates
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             type="text"
             placeholder="Add certificate"
             id="certificate"
@@ -201,7 +202,7 @@ const CompanyForm3 = () => {
             No. of Vacancies
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             type="number"
             placeholder="No. of vacancies"
             id="vacancies"
@@ -213,7 +214,7 @@ const CompanyForm3 = () => {
             Job Offer
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
             type="number"
             placeholder="Job offering amount in LPA"
             id="joboffering"
@@ -225,7 +226,7 @@ const CompanyForm3 = () => {
             Apply By
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none "
+            className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500 "
             type="date"
             id="applyby"
             value={isForm.applyby}
@@ -236,7 +237,7 @@ const CompanyForm3 = () => {
             About this job
           </label>
           <textarea
-            className="border outline-none rounded-sm px-2 py-2 min-h-40 max-h-96 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 min-h-40 max-h-96 dark:bg-transparent dark:border-gray-500"
             id="aboutthisjob"
             value={isForm.aboutthisjob}
             onChange={handleChange}
@@ -246,7 +247,7 @@ const CompanyForm3 = () => {
             Job requirements
           </label>
           <textarea
-            className="border outline-none rounded-sm px-2 py-2 min-h-40 max-h-96 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 min-h-40 max-h-96 dark:bg-transparent dark:border-gray-500"
             id="requirements"
             value={isForm.requirements}
             onChange={handleChange}
@@ -256,7 +257,7 @@ const CompanyForm3 = () => {
             Skills required
           </label>
           <input
-            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 dark:backdrop-blur-xl dark:bg-transparent dark:border-gray-500"
             type="text"
             id="skills"
             placeholder="Skills required"
@@ -268,7 +269,7 @@ const CompanyForm3 = () => {
             About this company
           </label>
           <textarea
-            className="border outline-none rounded-sm px-2 py-2 min-h-40 max-h-96 dark:backdrop-blur-xl dark:bg-white/20 dark:border-none"
+            className="border outline-none rounded-sm px-2 py-2 min-h-40 max-h-96 dark:backdrop-blur-xl dark:bg-transparent dark:border-gray-500"
             value={isForm.aboutcompany}
             id="aboutcompany"
             onChange={handleChange}

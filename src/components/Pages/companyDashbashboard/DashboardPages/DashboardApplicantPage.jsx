@@ -49,9 +49,9 @@ const DashboardApplicantPage = () => {
               Applicaitons
             </h1>
           </div>
-          <div className="w-full border rounded-md text-sm overflow-hidden">
+          <div className="w-full border rounded-md text-sm overflow-hidden dark:border-none">
             <table className="w-full">
-              <thead className="bg-gray-300 w-full dark:text-black">
+              <thead className="bg-gray-300 w-full dark:bg-gray-900 dark:text-white ">
                 <tr>
                   <th className="py-4 text-[12px] lg:text-[14px] font-medium ">Candidate Name</th>
                   <th className="py-4 text-[12px] lg:text-[14px] font-medium ">email</th>

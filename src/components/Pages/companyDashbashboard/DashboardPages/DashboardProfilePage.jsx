@@ -80,7 +80,7 @@ const DashboardProfilePage = () => {
           </h1>
 
           {/*  CARD LIST FIX */}
-          <div className="border rounded-xl mt-4 p-4 flex flex-col gap-4">
+          <div className="border rounded-sm dark:border-gray-500 mt-4 p-4 flex flex-col gap-4">
             {jobs.length > 0 ? (
               jobs.map((item) => {
                 return (

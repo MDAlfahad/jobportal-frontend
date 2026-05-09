@@ -3,10 +3,10 @@ import { FcGoogle } from "react-icons/fc";
 import Button from "../../Components/buttons/ButtonComponents";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Image from "../../images/authman.png";
+import Image from "../../images/authpage.jpg";
 import useAuthStore from "../../../Store/userAuth";
 import Errorcard from "../ErrorCard";
-import { IoIosEye, IoIosEyeOff } from "react-icons/io";
+import { VscEye, VscEyeClosed } from "react-icons/vsc";;
 import ErrorImage from "../../images/error.png"
 import GreenTick from "../../images/greenTick.png"
 
@@ -62,10 +62,10 @@ const UserLSignupPage = () => {
 
   return (
     <>
-      <div className="max-w-[1800px] m-auto py-6 md:py-[68px] px-4 authBg md:px-12  authbg noselect relative">
+      <div className="max-w-[1800px] m-auto py-20 flex flex-col justify-center items-center h-screen   px-4 md:px-12 h-sceen  relative bg-gray-100 dark:bg-black">
         <div
           className={
-            message ? "absolute top-20 left-1/2 -translate-x-1/2 " : "hidden"
+            message ? "absolute top-20 left-1/2 -translate-x-1/2 z-50" : "hidden"
           }
         >
           <Errorcard
@@ -76,17 +76,17 @@ const UserLSignupPage = () => {
           type={success ? "success" : "error"}
            />
         </div>
-        <div className="flex justify-between items-center h-[80vh] lg:px-20  pt-20 dark:text-white ">
+        <div className="flex justify-center items-center gap-10 border overflow-hidden bg-white rounded-xl p-2 dark:bg-gray-900 dark:border-none dark:text-white ">
           {/* login form */}
-          <form className="p-6 w-[400px]  flex flex-col " onSubmit={handlEvent}>
-            <h1 className="text-center font-medium text-xl md:text-3xl text-textcolor py-6 dark:text-white">
+          <form className="p-6 w-full lg:w-[400px] flex flex-col " onSubmit={handlEvent}>
+            <h1 className="text-center font-medium text-xl md:text-3xl text-textcolor py-4 dark:text-white">
               Get Registerd Here!
             </h1>
 
             <div className="flex flex-col gap-2 text-[12px]">
               <label htmlFor="name">Name</label>
               <input
-                className="text-[14px] px-2 py-2 border rounded-sm outline-none placeholder-textcolor2 dark:bg-black"
+                className="text-[14px] px-2 py-2 border rounded-sm outline-none placeholder-textcolor2 dark:bg-transparent dark:border-gray-700"
                 type="text"
                 placeholder="Name"
                 name="name"
@@ -96,7 +96,7 @@ const UserLSignupPage = () => {
               />
               <label htmlFor="email">Email</label>
               <input
-                className=" text-[14px] px-2 py-2 border rounded-sm outline-none placeholder-textcolor2 dark:bg-black"
+                className=" text-[14px] px-2 py-2 border rounded-sm outline-none placeholder-textcolor2 dark:bg-transparent dark:border-gray-700"
                 type="email"
                 id="email"
                 name="email"
@@ -105,9 +105,9 @@ const UserLSignupPage = () => {
                 onChange={handleChange}
               />
               <label htmlFor="password">Password</label>
-              <span className=" text-[14px] px-2 border rounded-sm flex items-center ">
+              <span className=" text-[14px] px-0.5 border rounded-sm flex items-center dark:border-gray-700 ">
                 <input
-                  className="px-2 py-2  outline-none  w-full placeholder-textcolor2 dark:bg-black"
+                  className="px-2 py-2  outline-none  w-full placeholder-textcolor2 dark:bg-transparent "
                   type={!show ? "password" : "text"}
                   id="password"
                   placeholder="password contain atleast 6 digits"
@@ -129,9 +129,9 @@ const UserLSignupPage = () => {
                 <p onClick={showPassword}>
                   {" "}
                   {!show ? (
-                    <IoIosEye  size={22}  />
+                    <VscEye  size={22}  />
                   ) : (
-                    <IoIosEyeOff  size={22} />
+                    <VscEyeClosed  size={22} className="bg-none" />
                   )}
                 </p>
               </span>
@@ -140,7 +140,7 @@ const UserLSignupPage = () => {
                 Sign up
               </button>
             </div>
-            <p className="text-sm md:text-[12px] py-2 text-center">
+            <p className="text-sm md:text-[12px] text-center">
               Already have Account?
               <span>
                 <Link to="/login-page" className="text-secondary">
@@ -150,12 +150,12 @@ const UserLSignupPage = () => {
               </span>
             </p>
             <div className="flex flex-col items-center">
-              <span className="flex items-center justify-center py-2 w-full">
+              <span className="flex items-center justify-center  w-full">
                 <hr className=" w-full  " />
                 <p className="px-4">or</p>
                 <hr className=" w-full " />
               </span>
-              <p className="flex gap-4 items-center border px-2 py-2 w-full justify-center rounded-sm font-medium  text-textcolor cursor-pointer dark:text-white">
+              <p className="flex gap-4 items-center border px-2 py-2 w-full justify-center rounded-sm font-medium  text-textcolor cursor-pointer dark:text-white dark:border-gray-700">
                 <FcGoogle className="text-2xl" />
                 Login with google
               </p>
@@ -164,8 +164,8 @@ const UserLSignupPage = () => {
           <div className="hidden md:block">
             <img
               src={Image}
-              alt=""
-              className="lg:mr-28 md:w-[250px] lg:w-[300px]"
+              alt=""  
+              className="dark:opacity-80"
             />
           </div>
         </div>

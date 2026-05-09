@@ -26,7 +26,7 @@ const JobPostCard = ({
   return (
     <>
       <div className="w-full h-auto md:px-2 ">
-        <div className="w-full border rounded-lg overflow-hidden bg-gray-100 border-0.5 text-black">
+        <div className="w-full border rounded-sm overflow-hidden bg-gray-100 dark:bg-gray-900 dark:text-white dark:border-none border-0.5 text-black">
           <div className="w-full flex ">
             <div className="w-2 h-50  bg-secondary"></div>
             <div className="py-4  flex justify-between pl-1 md:pl-3 pr-1 md:pr-6 w-full">
@@ -63,30 +63,30 @@ const JobPostCard = ({
           </div>
 
           {isShow && (
-            <div className=" text-textcolor text-[12px] md:text-[16px] px-4 md:px-12 py-4 w-full flex flex-col gap-2 bg-white">
+            <div className=" text-textcolor text-[12px] md:text-[16px] px-4 md:px-12 py-4 w-full flex flex-col gap-2 bg-white dark:bg-gray-900 dark:text-white">
               <span className=" flex py-4 text-[16px] font-medium">
                 Company:
                 <h1 className="text-[14px] font-normal pr-1">
                   {company_name}{" "}
                 </h1>
               </span>
-              <div className="md:flex justify-between md:justify-around border py-4 bg-gray-100 rounded-lg  ">
+              <div className="md:flex justify-between md:justify-around border py-4 bg-gray-100 rounded-sm dark:bg-gray-800 dark:border-none  ">
                 <div className="flex justify-center gap-6 items-center md:gap-20">
-                  <span className=" bg-gray-100 rounded-md flex text-[14px] font-light flex-col text-center">
+                  <span className="  rounded-md flex text-[14px] font-light flex-col text-center">
                     <h1 className="font-medium text-[16px]">Job Type</h1>{" "}
                     {job_workingtype}
                   </span>
-                  <span className=" bg-gray-100 rounded-md flex text-[14px] font-light flex-col text-center">
+                  <span className="  rounded-md flex text-[14px] font-light flex-col text-center">
                     <h1 className="font-medium text-[16px]">Annual CTC</h1> {job_ctc}
                   </span>
                 </div>
                 <hr className="md:none " />
                 <div className="flex justify-center gap-6 items-center md:gap-20">
-                  <span className=" bg-gray-100 rounded-md flex text-[14px] font-light flex-col text-center">
+                  <span className="  rounded-md flex text-[14px] font-light flex-col text-center">
                     <h1 className="font-medium text-[16px]">Experience</h1>{" "}
                     {job_experience}
                   </span>
-                  <span className=" bg-gray-100 rounded-md flex text-[14px] font-light flex-col text-center">
+                  <span className="  rounded-md flex text-[14px] font-light flex-col text-center">
                     <h1 className="font-medium text-[16px]">Last Date</h1> {Job_lastdate}
                   </span>
                 </div>
