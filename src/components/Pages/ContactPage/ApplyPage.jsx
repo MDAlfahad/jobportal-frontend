@@ -36,10 +36,10 @@ const ApplyPage = () => {
         </p>
         <div
         ref={ref.button} 
-        className="flex items-end gap-2 md:pt-12">
+        className="flex items-center gap-2 md:pt-12">
           <Button text="Apply Now" onClick={() => navigate("/job-page")} />
 
-          <p className="text-[12px] lg:text-[16px]">Get Your maximum hireing</p>
+          <p className="text-[12px] lg:text-[14px]">Get Your maximum hireing</p>
         </div>
       </div>
     </div>

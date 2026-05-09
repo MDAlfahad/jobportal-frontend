@@ -110,8 +110,9 @@ const FooterContainer = () => {
               </a>
             </div>
             <div className=" flex items-center py-2  gap-2 ">
+              <p className="text-[14px]">Light Mode</p>
               <DarkLightComponent/>
-              <p className="text-[14px] ">{theme == "light" ? "Dark Mode": "Light Mode"}</p>
+              <p className="text-[14px]">Dark Mode</p>
             </div>
           </div>
           <div className="flex gap-16 md:gap-20 py-2 md:py-0">
