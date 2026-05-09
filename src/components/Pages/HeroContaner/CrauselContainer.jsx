@@ -70,13 +70,13 @@ const CrauselContainer = () => {
           onClick={prevSlide}
           className="hidden sm:block p-1 xl:p-3 bg-gray-200 dark:text-black rounded-full mx-2 hover:bg-secondary hover:text-white transition"
         >
-          <MoveLeft/>
+          <MoveLeft />
         </button>
 
-        
+
         <div className="overflow-hidden w-full">
           <div
-            className="flex justify-center items-center transition-transform duration-500 ease-in-out gap-4"
+            className="flex transition-transform duration-500 ease-in-out"
             style={{
               transform: `translateX(-${currentIndex * (100 / visibleCards)}%)`,
             }}
@@ -84,7 +84,7 @@ const CrauselContainer = () => {
             {data.map((item) => (
               <div
                 key={item.id}
-                className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 mx-2 "
+               className="min-w-full sm:min-w-[50%] lg:min-w-[33.333%] p-2"
               >
                 <CrauselCard {...item} />
               </div>
@@ -106,9 +106,8 @@ const CrauselContainer = () => {
           <div
             key={i}
             onClick={() => setCurrentIndex(i)}
-            className={`w-2 h-2 rounded-full cursor-pointer ${
-              currentIndex === i ? "bg-secondary" : "bg-gray-300"
-            }`}
+            className={`w-2 h-2 rounded-full cursor-pointer ${currentIndex === i ? "bg-secondary" : "bg-gray-300"
+              }`}
           />
         ))}
       </div>

@@ -47,7 +47,7 @@ const Services = () => {
             h1="Verified Job Listings & Smart Job Matching"
             p="Access thousands of trusted job opportunities from top companies across various industries. Our intelligent matching system connects you with roles that fit your skills, experience, and career goals."
             text="Apply now"
-            open={() => navigate("/jobpage")}
+            open={() => navigate("/job-page")}
           />
 
           <Cards
@@ -55,15 +55,15 @@ const Services = () => {
             h1="Easy Application Process"
             p="Create one comprehensive profile and use it to apply for multiple job opportunities quickly and effortlessly. Upload your resume, showcase your skills, experience, certifications, and achievements in one place, and avoid the hassle of filling out repetitive application forms."
             text="Apply Now"
-            open={() => navigate("/jobpage")}
+            open={() => navigate("/job-page")}
           />
 
           <Cards
             logo={<AiOutlineMessage className="text-3xl text-secondary" />}
             h1="Job Alerts & Notifications"
             p="Stay updated with personalized job alerts so you never miss an opportunity."
-            text="Apply Now"
-            open={() => navigate("/jobpage")}
+            text="Learn More"
+            // open={() => navigate("/jobpage")}
           />
         </div>
       </div>

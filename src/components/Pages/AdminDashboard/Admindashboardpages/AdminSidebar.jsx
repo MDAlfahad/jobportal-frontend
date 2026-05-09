@@ -27,10 +27,9 @@ const AdminSidebar = ({ setActivePage, activePage }) => {
   const logout = useAuthStore((state) => state.logout);
 
   const menuClass = (page) =>
-    `flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md transition-all duration-100 ${
-      activePage === page
-        ? "bg-secondary text-white"
-        : "hover:bg-gray-200 dark:hover:bg-secondary"
+    `flex items-center gap-3 px-4 py-3 cursor-pointer rounded-md transition-all duration-100 ${activePage === page
+      ? "bg-secondary text-white"
+      : "hover:bg-gray-200 dark:hover:bg-secondary"
     }`;
 
   const handlelogut = () => {
@@ -40,9 +39,8 @@ const AdminSidebar = ({ setActivePage, activePage }) => {
 
   return (
     <div
-      className={` bg-white  border transition-all duration-100 dark:bg-black dark:border-gray-900 ${
-        show ? "w-[250px]" : "w-[50px] text-[22px]"
-      }`}
+      className={` bg-white  border transition-all duration-100 dark:bg-black dark:border-gray-900 ${show ? "w-[250px]" : "w-[50px] text-[22px]"
+        }`}
     >
       <div className="flex items-center gap-3 px-4 py-5 mt-14 ">
         <TextAlignJustify
@@ -105,22 +103,22 @@ const AdminSidebar = ({ setActivePage, activePage }) => {
         </div>
         <div className="flex flex-col gap-2 mt-auto w-full items-start justify-start">
           <div onClick={toggleTheme} className={`${menuClass("mode")} w-full`}>
-          {theme === "light" ? (
-            <BsMoonStars size={16} />
-          ) : (
-            <IoSunnyOutline size={16} />
-          )}
-          {show && <p>{theme === "light" ? "Dark" : "Light"}</p>}
-        </div>
+            {theme === "light" ? (
+              <BsMoonStars size={16} />
+            ) : (
+              <IoSunnyOutline size={16} />
+            )}
+            {show && <p>{theme === "light" ? "Dark" : "Light"}</p>}
+          </div>
 
-        <div
-          className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-secondary rounded-md w-full"
-          title={!show ? "Logout" : ""}
-          onClick={handlelogut}
-        >
-          <LogOut size={16} />
-          {show && <p>Logout</p>}
-        </div>
+          <div
+            className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-secondary rounded-md w-full"
+            title={!show ? "Logout" : ""}
+            onClick={handlelogut}
+          >
+            <LogOut size={16} />
+            {show && <p>Logout</p>}
+          </div>
         </div>
       </div>
     </div>

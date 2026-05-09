@@ -8,15 +8,18 @@ import {
   SlSocialTwitter,
 } from "react-icons/sl";
 import { IoMailOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DarkLightComponent from "../../Components/buttons/DarkLightComponent";
 import useThemeStore from "../../../Store/lightDarkmode";
+import useAuthStore from "../../../Store/userAuth";
 
 
 const FooterContainer = () => {
   const API = import.meta.env.VITE_API_URL;
   const [email, setEmail] = useState("");
   const{theme} = useThemeStore();
+  
+  const navigate = useNavigate();
 
   const apply = async (e) => {
     e.preventDefault();
@@ -132,22 +135,21 @@ const FooterContainer = () => {
               >
                 Jobs
               </Link>
-              <Link
-                className="hover:text-secondary text-[14px] transition duration-300"
-                to="/Dashboard-Company"
+              <p
+                className="hover:text-secondary text-[14px] transition duration-300 cursor-pointer"
               >
                 Company
-              </Link>
+              </p>
               <Link
                 className="hover:text-secondary text-[14px] transition duration-300"
-                to="#"
+                to="contact"
               >
                 Contact
               </Link>
             </div>
             <div className="flex flex-col gap-4">
               <h1 className="text-md md:text-xl font-semibold text-textcolor dark:text-white">
-                LInks
+                Links
               </h1>
               <Link
                 className="hover:text-secondary text-[14px] transition duration-300"

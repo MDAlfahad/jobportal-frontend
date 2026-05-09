@@ -40,7 +40,7 @@ const JobPageCard = ({
 
   return (
     <>
-      <div className="w-full flex flex-col p-4 shadow-xl rounded-xl border bg-white text-textcolor dark:bg-gray-900 dark:border-none dark:text-white">
+      <div className="w-full flex flex-col p-4 shadow-sm rounded-xl border bg-white text-textcolor dark:bg-gray-900 dark:border-none dark:text-white">
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
             <h1 className="text-xl xl:text-2xl font-semibold ">
@@ -48,7 +48,7 @@ const JobPageCard = ({
             </h1>
             <div className="flex items-center xl:gap-10">
               <p className="text-textcolor2 text-[12px] lg:text-[14px]">{company_name}</p>
-              <p className="p-1 xl:px-1 py-0.5 border bg-gray-100 rounded-sm flex items-center gap-1 text-[10px] lg:text-[12px]">
+              <p className="p-1 xl:px-1 py-0.5 border bg-gray-100 rounded-sm flex items-center gap-1 text-[10px] lg:text-[12px] dark:bg-transparent">
                 <TrendingUp strokeWidth={1.5} size={12} className="text-secondary"/>
                 Actively hiring
               </p>
@@ -87,12 +87,12 @@ const JobPageCard = ({
         </div>
 
         <div className="flex items-center justify-between">
-          <div className="flex gap-4 items-center"  >
-            <p className="flex items-center gap-1 border text-[10px] lg:text-[12px] bg-gray-100 rounded-sm px-2 py-1 text-secondary dark:text-black">
+          <div className="flex gap-0.5 md:gap-4 items-center"  >
+            <p className="flex items-center gap-1 border text-[10px] lg:text-[12px] bg-gray-100 rounded-sm px-2 py-1 text-secondary dark:text-black ">
             <TimerReset strokeWidth={1.5} size={15} />
             {formattedate}
           </p>
-          <p className="flex items-center gap-2 text-[10px] lg:text-[12px] border bg-gray-100 rounded-sm px-2 py-1 dark:bg-gray-900">
+          <p className="flex items-center md:gap-2 text-[10px] lg:text-[12px] border bg-gray-100 rounded-sm px-2 py-1 dark:bg-gray-900">
             {" "}
             <Zap strokeWidth={1.5} className="text-primary" size={18} />
             Be Early

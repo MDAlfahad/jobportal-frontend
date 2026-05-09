@@ -29,7 +29,7 @@ const Hero = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="w-full max-w-[1800px] m-auto mainbackground noselect capitalize dark:text-white">
+      <div className="w-full max-w-[1800px] m-auto mainbackground noselect capitalize">
         <div className="w-full md:px-4 lg:px-12 py-4 md:py-6 lg:py-10 px-4 text-center flex flex-col justify-center  lg:h-auto">
           <div className="flex flex-col items-center py-28">
             <h1
@@ -40,7 +40,7 @@ const Hero = () => {
             </h1>
             <p
             ref={ref.para}
-            className="text-sm md:text-[12px] lg:text-[14px]  text-textcolor max-w-[800px] pt-4 dark:text-white">
+            className="text-sm md:text-[12px] lg:text-[14px]  text-textcolor max-w-[800px] pt-4">
               The Placement Cell plays a vital role in shaping students’ careers
               by acting as a bridge between students and recruiters. It
               organizes campus recruitment drives, internships to prepare students for

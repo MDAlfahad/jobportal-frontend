@@ -8,7 +8,7 @@ const CrauselCard = ({
 }) => {
   return (
     <>
-      <div className="xl:w-96 px-6 py-12  h-auto flex flex-col gap-2 text-textcolor bg-white border rounded-xl dark:bg-gray-900 dark:border-none  ">
+      <div className="xl:w-92 px-6 py-12  h-60 flex flex-col gap-2 text-textcolor bg-white border rounded-xl dark:bg-gray-900 dark:border-none  ">
         <div>
           <h1 className="text-[14px] md:text-lg xl:text-xl  dark:text-white font-semibold md:font-bold capitalize line-clamp-1">
             {company_name}

@@ -13,7 +13,7 @@ const CompanyForm3 = () => {
 
   const [isForm, setIsForm] = useState({
     desigination: "",
-    companyname: "",
+    companyname: user?.user_name,
     companyEmail: user.user_email,
     jobtype: "",
     locationtype: "",
@@ -215,7 +215,7 @@ const CompanyForm3 = () => {
           </label>
           <input
             className="border outline-none rounded-sm px-2 py-2 dark:bg-transparent dark:border-gray-500"
-            type="number"
+            type="text"
             placeholder="Job offering amount in LPA"
             id="joboffering"
             value={isForm.joboffering}

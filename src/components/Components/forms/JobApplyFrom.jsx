@@ -231,7 +231,7 @@ const JobApplyForm = ({ className, onClose }) => {
             <h1 className="text-sm md:text-[16px] font-semibold text-black dark:text-white">
               Confirm your availability
             </h1>
-            <div className="flex flex-col gap-2 border py-4 px-2 rounded-xl bg-gray-200  dark:text-white dark:bg-black dark:border-none">
+            <div className="flex flex-col gap-2 border py-4 px-2 rounded-xl bg-gray-200  dark:text-white dark:bg-black/30 dark:border-none">
               <label className="flex gap-2 items-center text-[16px] cursor-pointer">
                 <input
                   type="radio"
@@ -269,7 +269,7 @@ const JobApplyForm = ({ className, onClose }) => {
                 Are you open to travel for fieldwork as part of your
                 responsibilities?
               </p>
-              <div className="flex flex-col border bg-gray-200 py-4 px-2 rounded-xl dark:bg-black dark:border-none text-[14px]">
+              <div className="flex flex-col border bg-gray-200 py-4 px-2 rounded-xl dark:bg-black/30 dark:border-none text-[14px]">
                 <label className="flex gap-2 items-center cursor-pointer">
                   <input
                     type="radio"
@@ -293,18 +293,21 @@ const JobApplyForm = ({ className, onClose }) => {
                 <p className="text-black font-semibold text-[16px] dark:text-white">
                   How many months of experience do you have?
                 </p>
-                <input
-                  type="number"
+                <div className="flex gap-2 items-center">
+                  <input
+                  type="text"
                   min="0"
                   value={experience}
                   onChange={(e) => setExperience(e.target.value)}
                   placeholder="Enter numeric value"
-                  className="outline-none border p-2 rounded-md w-48 bg-white text-[14px]"
+                  className="outline-none border p-2 rounded-md w-48 bg-white dark:bg-black/30 text-[14px]"
                 />
+                <p className="text-[14px] text-[red]">Freshers Type NA</p>
+                </div>
               </div>
             </div>
 
-            <div className="flex flex-col gap-2 justify-center items-center border rounded-xl p-4 mt-2 dark:border-none dark:bg-black">
+            <div className="flex flex-col gap-2 justify-center items-center border rounded-xl p-4 mt-2 dark:border-none dark:bg-black/30">
               <h1 className="text-md md:text-lg text-black font-semibold dark:text-white">
                 Upload resume
               </h1>

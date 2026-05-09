@@ -21,7 +21,7 @@ const DashboardProfilePage = () => {
   return (
     <>
       {/* Added padding + height fix */}
-      <div className="mt-16 px-4 md:px-6 py-4 relative w-full min-h-[90vh] overflow-y-auto dark:bg-black dark:text-white">
+      <div className="mt-16 px-4 md:px-6 py-4 relative w-full dark:bg-black dark:text-white">
         
         {/* HEADER */}
         <div className="border-b-2 dark:border-none flex justify-between items-center">

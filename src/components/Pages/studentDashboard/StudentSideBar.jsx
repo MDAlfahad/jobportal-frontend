@@ -27,7 +27,7 @@ const StudentSideBar = ({ setActivePage, activePage }) => {
 
   return (
     <div
-      className={` bg-white border  transition-all duration-300 dark:bg-black dark:border-gray-900 ${
+      className={` bg-white border  transition-all duration-300 dark:bg-black dark:bg-gray-900 dark:border-none ${
         show ? "w-[250px]" : "w-[50px]"
       }`}
     >

@@ -75,7 +75,7 @@ const JobPageRoute = () => {
           <div className="border w-full max-w-[1100px] p-4 md:p-6 rounded-xl flex flex-col gap-4 my-6 md:my-10 border-gray-200 dark:bg-gray-900 dark:backdrop-blur dark:border-none">
 
             {/* HEADER */}
-            <div className="flex flex-col gap-2 bg-white p-4 rounded-xl  dark:bg-black dark:text-white">
+            <div className="flex flex-col gap-2 bg-white p-4 rounded-xl  dark:bg-black/30 dark:text-white">
 
               <div className="border rounded-sm px-2 py-1 w-fit flex gap-2 items-center">
                 <TrendingUp size={16} className="text-secondary" />
@@ -135,11 +135,11 @@ const JobPageRoute = () => {
 
               {/* TAGS */}
               <div className="flex flex-wrap gap-2 md:gap-4 items-center text-sm">
-                <span className="bg-gray-200 px-3 py-1 rounded-full flex items-center gap-1 dark:bg-black">
+                <span className="bg-gray-200 px-3 py-1 rounded-full flex items-center gap-1 dark:bg-black/30">
                   <TimerReset size={16} />
                   <p>{formattedDate}</p>
                 </span>
-                <span className="bg-gray-200 px-3 py-1 rounded-full dark:bg-black">
+                <span className="bg-gray-200 px-3 py-1 rounded-full dark:bg-black/30">
                   {job.job_type}
                 </span>
               </div>
@@ -177,7 +177,7 @@ const JobPageRoute = () => {
             
 
             {/* ABOUT */}
-            <div className="bg-white p-4 rounded-xl dark:bg-black dark:text-white">
+            <div className="bg-white p-4 rounded-xl dark:bg-black/30 dark:text-white">
               <h1 className="text-lg md:text-xl font-semibold text-black  dark:text-white">
                 About this job
               </h1>
@@ -187,13 +187,13 @@ const JobPageRoute = () => {
             </div>
 
             {/* SKILLS */}
-            <div className="p-4 bg-white rounded-xl dark:bg-black dark:text-white  ">
+            <div className="p-4 bg-white rounded-xl dark:bg-black/30 dark:text-white  ">
               <h1 className="font-semibold text-black dark:text-white">Skills required</h1>
               <p className=" font-light text-[14px]">{job.job_skills}</p>
             </div>
 
             {/* CERTIFICATIONS */}
-            <div className="p-4 bg-white rounded-xl dark:bg-black dark:text-white">
+            <div className="p-4 bg-white rounded-xl dark:bg-black/30 dark:text-white">
               <h1 className="font-semibold text-black dark:text-white">
                 Earn certificates in this skills
               </h1>
@@ -201,7 +201,7 @@ const JobPageRoute = () => {
             </div>
 
             {/* EXTRA */}
-            <div className="p-4 bg-white rounded-xl dark:bg-black dark:text-white ">
+            <div className="p-4 bg-white rounded-xl dark:bg-black/30 dark:text-white ">
               <h1 className="font-semibold text-black dark:text-white">Who can apply</h1>
               <p className="font-light text-[14px]">
                 Only those candidates can apply who:
@@ -211,7 +211,7 @@ const JobPageRoute = () => {
             </div>
 
             {/* COMPANY */}
-            <div className="p-4 bg-white rounded-xl dark:bg-black dark:text-white">
+            <div className="p-4 bg-white rounded-xl dark:bg-black/30 dark:text-white">
               <h1 className="font-semibold text-black dark:text-white">
                 About (company name)
               </h1>
