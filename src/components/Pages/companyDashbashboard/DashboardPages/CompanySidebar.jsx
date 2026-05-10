@@ -80,7 +80,7 @@ const CompanySidebar = ({ setActivePage, activePage }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 mt-auto w-full items-start">
+        <div className="flex flex-col gap-2 mt-auto w-full items-start pt-2">
 
           <div onClick={toggleTheme} className={`${menuClass("mode")} w-full`}>
             {theme === "light" ? (

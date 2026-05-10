@@ -43,7 +43,7 @@ const FooterContainer = () => {
 
   return (
     <>
-      <div className="w-full shadow-2xl border noselect capitalize dark:bg-black dark:text-white dark:border-black">
+      <div className="w-full shadow-2xl border-t noselect capitalize dark:bg-black dark:text-white dark:border-t dark:border-gray-500">
         <div className="w-full max-w-[1800px] m-auto px-4 md:px-12 py-12 md:flex justify-between">
           <div className="flex flex-col gap-1 text-center md:text-start">
             <h1 className="text-3xl font-semibold md:text-4xl">JOB PORTAL</h1>

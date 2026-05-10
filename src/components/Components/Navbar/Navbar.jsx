@@ -25,7 +25,7 @@ const Navbar = ({ }) => {
     navigate("/login-page");
   };
   // scroll Animation
-  
+
   useEffect(() => {
     const handlescroll = () => {
       if (window.scrollY > 200) {
@@ -86,41 +86,41 @@ const Navbar = ({ }) => {
           </h1>
           {/* Desktop nav  */}
 
-          {user?.auth_role === "admin" || user?.auth_role === "company" ? "": 
-          <div className="hidden md:flex gap-5 lg:gap-10">
-            <NavLink
-              className={({ isActive }) =>
-                `relative px-2  ${isActive ? "text-secondary after:w-full" : "after:w-0"
-                } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
-              }
-              to="/"
-            >
-              Home
-            </NavLink>
-            <NavLink
-              className={({ isActive }) =>
-                `relative px-2  ${isActive
-                  ? "text-secondary after:w-full duration-300"
-                  : "after:w-0"
-                } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
-              }
-              to="/job-page"
-            >
-              Job
-            </NavLink>
+          {user?.auth_role === "admin" || user?.auth_role === "company" ? "" :
+            <div className="hidden md:flex gap-5 lg:gap-10">
+              <NavLink
+                className={({ isActive }) =>
+                  `relative px-2  ${isActive ? "text-secondary after:w-full" : "after:w-0"
+                  } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
+                }
+                to="/"
+              >
+                Home
+              </NavLink>
+              <NavLink
+                className={({ isActive }) =>
+                  `relative px-2  ${isActive
+                    ? "text-secondary after:w-full duration-300"
+                    : "after:w-0"
+                  } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
+                }
+                to="/job-page"
+              >
+                Job
+              </NavLink>
 
-            <NavLink
-              className={({ isActive }) =>
-                `relative px-2 ${isActive
-                  ? "text-secondary after:w-full transition-all duration-300"
-                  : "after:w-0 "
-                } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all duration-300`
-              }
-              to="/contact"
-            >
-              Contact
-            </NavLink>
-          </div>}
+              <NavLink
+                className={({ isActive }) =>
+                  `relative px-2 ${isActive
+                    ? "text-secondary after:w-full transition-all duration-300"
+                    : "after:w-0 "
+                  } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all duration-300`
+                }
+                to="/contact"
+              >
+                Contact
+              </NavLink>
+            </div>}
         </div>
 
 
@@ -165,16 +165,20 @@ const Navbar = ({ }) => {
             />
           </div>
         </div>
+        {/* dropDown menu  */}
         <div
           ref={dropdownRef}
           className={`absolute top-full right-16 md:right-5 shadow-lg border border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
         >
           <div className=" flex flex-col text-center bg-white dark:bg-black text-sm">
             {!isAuthenticated ? (
-              <p
-                className="md:hidden px-4 py-2 hover:bg-secondary hover:text-white "
+              <button
+                type="button"
+                className=" w-full px-4 py-2 text-left outline-none border-none hover:bg-secondary hover:text-white"
                 onClick={() => navigate("login-page")}
-              >Sign Up</p>
+              >
+                Sign Up
+              </button>
             ) : (
               <Link
                 to={
@@ -191,16 +195,15 @@ const Navbar = ({ }) => {
                 DashBoard
               </Link>
             )}
-            {!isAuthenticated ? (
-              ""
-            ) : (
-              <p
-                className="px-4 py-2 hover:bg-secondary hover:text-white "
+            {isAuthenticated &&
+              <button
+                type="button"
+                className="w-full px-4 py-2 text-left outline-none border-none hover:bg-secondary hover:text-white"
                 onClick={handlelogout}
               >
-                logout
-              </p>
-            )}
+                Logout
+              </button>
+            }
           </div>
         </div>
 

@@ -18,7 +18,7 @@ const MotivatePage = () => {
             <div className='px-6 py-4 rounded-xl border border-gray-300 shadow-sm  md:w-96 h-40 flex items-center justify-center gap-2 bg-secondary dark:border-none dark:text-white '>
                 <span className='text-3xl font-semibold'>50K+</span> Companies
             </div>
-            <div className='px-6 py-4 rounded-xl border border-gray-300 shadow-sm  md:w-96 h-40 flex items-center justify-center gap-2  dark:border-none dark:text-white '>
+            <div className='px-6 py-4 rounded-xl border border-gray-300 shadow-sm  md:w-96 h-40 flex items-center justify-center gap-2  dark:text-white '>
                 <span className='text-3xl font-semibold'>Daily 10+</span> Internship posts
             </div>
         </div>
