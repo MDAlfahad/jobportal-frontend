@@ -24,10 +24,10 @@ const FormsDetails = () => {
                 <th className="py-2 font-medium">
                   Company name
                 </th>
-                <th className="py- font-medium">
+                <th className="py-2 font-medium">
                   Student Name
                 </th>
-                <th className="py-font-medium">
+                <th className="py-2 font-medium">
                   Apllication <br /> Status
                 </th>
                 <th className="py-2 font-medium">
@@ -36,21 +36,20 @@ const FormsDetails = () => {
               </tr>
             </thead>
             <tbody>
-              {applications.map((application) => (
-                <tr className="text-center w-full text-sm text-textcolor">
-                  <td className="py-2">myself</td>
-                  <td className="py-2">Fronetend developer</td>
-                  <td className="py-2">20/12/2024</td>
+              {applications.map((item, index) => (
+                <tr
+                  key={item.id || index}
+                  className="text-center w-full bg-white border-b text-textcolor"
+                >
+                  <td className="py-2 line-clamp-1 lg:line-clamp-none">{item.uuser_email}</td>
+                  <td className="py-2">{item.job_desigination}</td>
+                  <td className="py-2 line-clamp-1 lg:line-clamp-none">{item.job_location}</td>
                   <td className="py-2">
-                    <p className="border rounded-md py-2 flex items-center justify-center font-semibold">
-                      pending
-                    </p>
+                    {item.applied_at
+                      ? new Date(item.applied_at).toLocaleDateString()
+                      : "N/A"}
                   </td>
-                  <td className="py-2">
-                    <p className="border rounded-md py-2 flex items-center justify-center font-semibold bg-secondary text-white">
-                      review
-                    </p>
-                  </td>
+
                 </tr>
               ))}
             </tbody>

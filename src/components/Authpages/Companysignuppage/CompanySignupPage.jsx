@@ -5,6 +5,7 @@ import Button from "../../Components/buttons/ButtonComponents";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import useAuthStore from "../../../Store/userAuth";
 
 
 const CompanySignupPage = () => {
@@ -15,6 +16,7 @@ const CompanySignupPage = () => {
   const showPassword = ()=>{
     setshow(!show)
   }
+  const {setLoading, loading} = useAuthStore();
 
 
   // const API_CALL = `http://localhost:4000`;
@@ -39,6 +41,7 @@ const CompanySignupPage = () => {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const signup = await axios.post(
         `${API}/api/register_company`,
         isSignup,
@@ -46,6 +49,8 @@ const CompanySignupPage = () => {
       console.log(signup.data);
     } catch (err) {
       console.log(err);
+    }finally{
+      setLoading(false)
     }
   };
   //navigate page 
@@ -136,7 +141,9 @@ const CompanySignupPage = () => {
                   onChange={handleChange}
                   placeholder="e.g +91 6260XX XXXX XX"
                 />
-                <Button text="Sign up" onclick="handlenavigate"/>
+                <Button
+                disabled = {loading}
+                text={loading ?"Creating account...": "Create account"} onclick="handlenavigate"/>
               </div>
               <p className="text-sm md:text-[12px] py-4 text-center">
                 Already have Account?

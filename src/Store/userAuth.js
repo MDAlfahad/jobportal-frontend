@@ -9,12 +9,20 @@ const useAuthStore = create(
       isAuthenticated: false,
       message: "",
       success: null,
+      loading: false,
+      setLoading: (status)=>
+        set({
+          loading:status,
+        }),
+      
 
       setAuth: (userData, token) =>
         set({
           user: userData,
           token: token,
           isAuthenticated: true,
+          loading: false,
+
         }),
 
       setMessage: (msg, status) =>
@@ -34,6 +42,7 @@ const useAuthStore = create(
           user: null,
           token: null,
           isAuthenticated: false,
+          loading: false,
         }),
     }),
     {

@@ -14,7 +14,7 @@ import GreenTick from "../../images/greenTick.png"
 const UserLSignupPage = () => {
   const navigate = useNavigate();
   const [show, setshow] = useState(false);
-  const { message, success, setMessage, clearMessage } = useAuthStore();
+  const { message, success, setMessage,setLoading, loading, clearMessage } = useAuthStore();
   const showPassword = () => {
     setshow(!show);
   };
@@ -42,6 +42,7 @@ const UserLSignupPage = () => {
   const handlEvent = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
       const res = await axios.post(`${API}/api/register_User`, formData, {
         headers: { "Content-Type": "application/json" },
       });
@@ -53,6 +54,8 @@ const UserLSignupPage = () => {
     } catch (err) {
       const errorMsg = err.response?.data?.message || "Something went wrong";
       setMessage(errorMsg, false);
+    } finally{
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -136,8 +139,10 @@ const UserLSignupPage = () => {
                 </p>
               </span>
               <p className="text-[red]">{popup.message}</p>
-              <button className="w-full p-2 border rounded-sm my-2 bg-secondary hover:bg-textcolor text-white font-medium dark:border-none">
-                Sign up
+              <button
+              disabled={loading}
+              className="w-full p-2 border rounded-sm my-2 bg-secondary hover:bg-textcolor text-white font-medium dark:border-none">
+                {loading ? "Creating account...": "Create account"}
               </button>
             </div>
             <p className="text-sm md:text-[12px] text-center">

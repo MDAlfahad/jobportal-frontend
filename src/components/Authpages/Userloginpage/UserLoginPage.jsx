@@ -17,7 +17,7 @@ const UserLoginPage = () => {
   const navigate = useNavigate();
   const setAuth = useAuthStore((state) => state.setAuth);
   const [show, setshow] = useState(false);
-  const { message, success, setMessage, clearMessage } = useAuthStore();
+  const {user,  message, success, setMessage, loading, setLoading, clearMessage } = useAuthStore();
   const [popup, setpopup] = useState({
     show: false,
     message: "",
@@ -31,6 +31,8 @@ const UserLoginPage = () => {
   const handlelogin = async (e) => {
     e.preventDefault();
     try {
+      setLoading(true);
+
       if (email == "" || password == "") {
         setpopup({
           show: true,
@@ -42,6 +44,7 @@ const UserLoginPage = () => {
             message: "",
           });
         }, 3000);
+        setLoading(false);
         return;
       }
       const login = await axios.post(`${API}/api/login_users`, {
@@ -52,14 +55,11 @@ const UserLoginPage = () => {
       const { token, user } = login.data;
       setMessage("Login Successful", true);
       setAuth(user, token);
-      if (user.auth_role === "admin") navigate("/admin-dashboard");
-      else if (user.auth_role === "company") navigate("/Dashboard-Company");
-      else {
-        navigate("/");
-      }
     } catch (err) {
       const errorMsg = err.response?.data?.message || "Something went wrong";
       setMessage(errorMsg, false);
+    } finally {
+      setLoading(false);
     }
   };
   //show passwod
@@ -80,20 +80,24 @@ const UserLoginPage = () => {
           }
         >
           <Errorcard
-            onclick={
-              success === false
-                ? clearMessage
-                : (message) => navigate("/login-page")
-            }
+            onclick={() => {
+             clearMessage();
+             if(success === false) return
+              if (user?.auth_role === "admin") navigate("/admin-dashboard");
+              else if (user?.auth_role === "company") navigate("/Dashboard-Company");
+              else {
+                navigate("/")
+              }
+            }}
             image={
               success === false ? (
-                <img src={ErrorImage} width={70} /> 
+                <img src={ErrorImage} width={70} />
               ) : (
                 <img src={GreenTick} width={70} />
               )
             }
             para={
-              success === true ? "Error state Conformation" : "Congratulations"
+              success === true ? "Congratulations": "Error state Conformation" 
             }
             head={message}
             type={success ? "success" : "error"}
@@ -128,16 +132,17 @@ const UserLoginPage = () => {
                   onChange={(e) => setPassword(e.target.value)}
                 />
                 <p onClick={showPassword} >
-                  {!show ? <VscEye size={22}  /> : <VscEyeClosed size={22} />}
+                  {!show ? <VscEye size={22} /> : <VscEyeClosed size={22} />}
                 </p>
               </span>
               <p className="text-[red]">{popup.message}</p>
 
               <button
+                disabled={loading}
                 type="submit"
                 className="border rounded-sm p-2 font-medium bg-secondary hover:bg-textcolor w-full text-white dark:border-none "
               >
-                Login
+                {loading ? "Logging in..." : "Login"}
               </button>
             </div>
 
