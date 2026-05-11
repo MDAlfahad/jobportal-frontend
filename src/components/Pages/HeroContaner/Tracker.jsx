@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import useAnimate from "../../../Store/animation";
-import Image1 from "../../images/golife1.png";
 import Image2 from "../../images/golife2.png";
 
 const Traker = () => {

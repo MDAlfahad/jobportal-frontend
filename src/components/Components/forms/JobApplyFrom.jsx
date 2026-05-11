@@ -74,8 +74,6 @@ const JobApplyForm = ({ className, onClose }) => {
     formData.append("experience", experience);
     formData.append("resume", resume);
 
-    console.log(isJobData.company_id);
-
     try {
       const response = await fetch(`${API}/api/apply-form`, {
         method: "POST",

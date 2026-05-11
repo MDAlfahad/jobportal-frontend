@@ -1,5 +1,6 @@
 import { MousePointerClick } from "lucide-react";
-import Image from "../../images/company.webp";
+import Image from "../../images/dummyimage.png";
+import FeatureImage from "../../images/image.webp";
 
 const BarContainer = () => {
   return (
@@ -41,7 +42,7 @@ const BarContainer = () => {
             <div className="h-12 w-12 rounded-full overflow-hidden border border-white">
               <img
                 className=" w-full h-full object-cover"
-                src={Image}
+                src={FeatureImage}
                 alt=""
               />
             </div>

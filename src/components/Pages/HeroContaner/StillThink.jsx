@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../Components/buttons/ButtonComponents";
-import RightImage from "../../images/sideimg_1.png";
 import { useRef } from "react";
 import useAnimate from "../../../Store/animation";
 

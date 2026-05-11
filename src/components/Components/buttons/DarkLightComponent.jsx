@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
 import useThemeStore from "../../../Store/lightDarkmode";
-import Lightmode from "../../images/lightmode.png"
-import Darkmode from "../../images/darkmode.png"
 
 const DarkLightComponent = () => {
   const { theme, toggleTheme } = useThemeStore();

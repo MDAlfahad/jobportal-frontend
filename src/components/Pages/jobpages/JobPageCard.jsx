@@ -7,7 +7,6 @@ import {
   TrendingUp,
   Zap,
 } from "lucide-react";
-import Logo from "../../images/jio.png";
 import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -26,6 +25,7 @@ const JobPageCard = ({
   job_skills,
   job_workingtype,
   posted_at,
+  company_logo,
 }) => {
 
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ const JobPageCard = ({
             </div>
           </div>
           <div className="cover overflow-hidden">
-            <img src={Logo}
+            <img src={company_logo || ""}
              width={60} alt="" />
           </div>
         </div>
