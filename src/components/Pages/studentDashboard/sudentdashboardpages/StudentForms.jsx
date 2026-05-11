@@ -35,8 +35,10 @@ const StudentForms = () => {
               </tr>
             </thead>
             <tbody>
-              {applications.map((item) => (
-                <tr className="text-center w-full bg-white  dark:bg-gray-900  ">  
+              {applications.map((item, index) => (
+                <tr
+                key={item.job_applicaiton_id || index}
+                className="text-center w-full bg-white  dark:bg-gray-900  ">  
                   <td className="py-4">{item.company_name}</td>
                   <td className="py-4">{item.job_desigination}</td>
                   <td className="py-4">{item.applied_at ? new Date(item.applied_at).toLocaleDateString() : "N/A"}</td>

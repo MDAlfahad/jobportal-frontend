@@ -1,4 +1,4 @@
-    import { ConciergeBell, SquarePen} from "lucide-react";
+    import { ConciergeBell, SquarePen, X} from "lucide-react";
     import Logo from "../../../images/image.webp";
     import Button from "../../../Components/buttons/ButtonComponents";
     import axios from "axios";
