@@ -168,7 +168,7 @@ const Navbar = ({ }) => {
         {/* dropDown menu  */}
         <div
           ref={dropdownRef}
-          className={`absolute top-full right-16 md:right-5 shadow-lg border border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
+          className={`absolute top-full right-16 md:right-5 shadow-lg  border-gray-100  ${isUser ? " translate-y-0" : "max-h-0 hidden -translate-y-0"}`}
         >
           <div className=" flex flex-col text-center bg-white dark:bg-black text-sm">
             {!isAuthenticated ? (
