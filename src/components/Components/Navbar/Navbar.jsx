@@ -174,7 +174,7 @@ const Navbar = ({ }) => {
             {!isAuthenticated ? (
               <button
                 type="button"
-                className=" w-full px-4 py-2 text-left outline-none border-none hover:bg-secondary hover:text-white"
+                className="md:hidden w-full px-4 py-2 text-left outline-none border-none hover:bg-secondary hover:text-white"
                 onClick={() => navigate("login-page")}
               >
                 Sign Up

@@ -3,14 +3,14 @@ const Errorcard = ({ head, onclick, para, image }) => {
   return (
     <div
       className={
-        "px-4 py-3 h-30 rounded-xl bg-secondary/30 border flex flex-col justify-center items-center backdrop-blur-xl dark:bg-gray-900 dark:border-none dark:text-white "
+        "px-6 py-4 h-30 rounded-xl bg-secondary/30  border-t-[10px] border-secondary flex flex-col justify-center items-center backdrop-blur-xl dark:bg-gray-900 dark:border-none dark:text-white "
       }
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-4">
         <div>{image}</div>
         <div>
           <h1 className="text-[14px] font-regular">{para}</h1>
-          <p className="text-[12px] py-2">{head}</p>
+          <p className="text-[12px] py-2 ">{head}</p>
         </div>
       </div>
       <button

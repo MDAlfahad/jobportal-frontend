@@ -9,7 +9,7 @@ const CompanyForm3 = () => {
 
   // const API_CALL = `http://localhost:4000`;
   const API = import.meta.env.VITE_API_URL;
-  const{user, token} = useAuthStore();
+  const{loading, setLoding, user, token} = useAuthStore();
 
   const [isForm, setIsForm] = useState({
     desigination: "",
@@ -43,16 +43,19 @@ const CompanyForm3 = () => {
     e.preventDefault();
 
     try {
-      
+      setLoding(true)
       const res = await axios.post(`${API}/api/postjob`, isForm, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       alert(res.data.message);
+
     } catch (err) {
       alert(err.response?.data?.message || "Failed to submit data");
       console.log(err.response?.data?.message)
+    }finally{
+      setLoding(false);
     }
   };
 
@@ -276,7 +279,7 @@ const CompanyForm3 = () => {
           ></textarea>
         </div>
         <div>
-          <Button text="Submit" type="submit" />
+          <Button text={loading ? "Submitting" : "Submit"} type="submit" />
         </div>
       </form>
     </>

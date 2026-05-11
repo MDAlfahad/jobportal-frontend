@@ -93,11 +93,11 @@ const UserLoginPage = () => {
               success === false ? (
                 <img src={ErrorImage} width={70} />
               ) : (
-                <img src={GreenTick} width={70} />
+                <img src={GreenTick} width={60} />
               )
             }
             para={
-              success === true ? "Congratulations": "Error state Conformation" 
+              success === true ? <p className="text-[green]">Congratulations</p>: <p className="text-[red]">Error state Conformation</p> 
             }
             head={message}
             type={success ? "success" : "error"}

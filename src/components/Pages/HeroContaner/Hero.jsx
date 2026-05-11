@@ -12,6 +12,7 @@ import useAnimate from "../../../Store/animation";
 import CompanyApplyPage from "./CompanyApplyPage";
 import Traker from "./Tracker";
 import MotivatePage from "./MotivatePage";
+import Errorcard from "../../Authpages/ErrorCard";
 
 const Hero = () => {
    const ref = {
