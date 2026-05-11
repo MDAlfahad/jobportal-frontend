@@ -21,7 +21,7 @@ const StudentForms = () => {
         </div>
         <div className="w-full  rounded-xl overflow-hidden dark:text-white dark:border-none">
           <table className="w-full">
-            <thead className="bg-white dark:bg-gray-900 border border-b-textcolor  dark:border-none ">
+            <thead className="bg-white dark:bg-gray-900 border-b border-b-textcolor  dark:border-b-secondary ">
               <tr>
                 <th className="py-4 font-semibold">Company</th>
                 <th className="py-4 font-semibold">Profile</th>

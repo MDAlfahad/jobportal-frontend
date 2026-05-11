@@ -10,7 +10,7 @@ const BarContainer = () => {
           
           {/* Card 1 */}
           <div className="w-full sm:w-[80%] md:w-auto flex items-center justify-between md:justify-center gap-4 lg:gap-8 bg-white rounded-full px-5 sm:px-6 py-3 md:py-2 text-black md:text-white md:bg-transparent">
-            <div className="relative flex ">
+            <div className="relative flex  -space-x-6 ">
               <div className="h-12 w-12  rounded-full overflow-hidden border border-white ">
                 <img
                 className="w-full h-full object-cover"
@@ -18,13 +18,21 @@ const BarContainer = () => {
                 alt=""
               />
               </div>
-              <div className="h-12 w-12 rounded-full overflow-hidden absolute left-5 top-0 border border-white">
+              <div className="h-12 w-12 rounded-full overflow-hidden border border-white">
                 <img
                 className="w-full h-full object-cover"
                 src={Image}
                 alt=""
               />
               </div>
+              <div className="h-12 w-12 rounded-full overflow-hidden border border-white">
+                <img
+                className="w-full h-full object-cover"
+                src={Image}
+                alt=""
+              />
+              </div>
+              <p className="text-xl font-semibold flex items-center justify-center bg-black/30 text-white border h-12 w-12 rounded-full ring-bg-primary">5+</p>
             </div>
 
             <div>

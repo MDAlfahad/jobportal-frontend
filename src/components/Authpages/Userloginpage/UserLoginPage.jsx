@@ -135,6 +135,7 @@ const UserLoginPage = () => {
                   {!show ? <VscEye size={22} /> : <VscEyeClosed size={22} />}
                 </p>
               </span>
+              <p className="text-[12px] text-end hover:underline cursor-pointer">Forget passwod ?</p>
               <p className="text-[red]">{popup.message}</p>
 
               <button
