@@ -1,9 +1,8 @@
-    import { ConciergeBell, SquarePen, X } from "lucide-react";
+    import { ConciergeBell, SquarePen} from "lucide-react";
     import Logo from "../../../images/image.webp";
     import Button from "../../../Components/buttons/ButtonComponents";
-    import { useState } from "react";
     import axios from "axios";
-    import { useEffect } from "react";
+    import { useEffect, useState } from "react";
     import useAuthStore from "../../../../Store/userAuth";
     import Dummy from "../../../images/dummyimage.png";
     const StudentProfilePage = () => {
@@ -71,7 +70,7 @@
             setAuth(updateUser, useAuthStore.getState().token);
           }
 
-          alert("Photo Uploaded Successfully");
+          alert(res.data.message);
         } catch (error) {
           console.log(error);
         } finally {
@@ -176,7 +175,7 @@
                         preview
                           ? preview
                           : user?.user_image
-                            ? `${API}/uploads/${user.user_image}`
+                            ? `${API}/uploads/${user?.user_image}`
                             : Dummy
                       }
                       alt="profile"
@@ -244,7 +243,7 @@
 
                     <input
                       type="text"
-                      value={user?.user_contact}
+                      value={user?.user_contact || ""}
                       readOnly
                       className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary"
                     />
@@ -254,7 +253,7 @@
                     </label>
                     <input
                       type="text"
-                      value={user?.user_address}
+                      value={user?.user_address || ""}
                       readOnly
                       className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary"
                     />

@@ -50,8 +50,8 @@ const DashboardApplicantPage = () => {
           </div>
           <div className="w-full border rounded-md text-sm overflow-hidden dark:border-none">
             <table className="w-full">
-              <thead className="bg-gray-300 w-full dark:bg-gray-900 dark:text-white ">
-                <tr>
+              <thead className="bg-gray-300 w-full border-b border-secondary dark:bg-gray-900 dark:text-white ">
+                <tr >
                   <th className="py-4 text-[12px] lg:text-[14px] font-medium ">Candidate Name</th>
                   <th className="py-4 text-[12px] lg:text-[14px] font-medium ">email</th>
                   <th className="py-4 text-[12px] lg:text-[14px] font-medium ">Designation</th>
@@ -66,7 +66,7 @@ const DashboardApplicantPage = () => {
                 {applications.map((item, index) => (
                   <tr
                     key={item.id || index}
-                    className="text-center w-full bg-white border-b text-textcolor"
+                    className="text-center w-full bg-white  text-textcolor dark:bg-gray-900 dark:text-white "
                   >
                     <td className="py-2 line-clamp-1 lg:line-clamp-none">{item.user_name}</td>
                     <td className="py-2">{item.user_email}</td>

@@ -52,7 +52,7 @@ const CrauselContainer = () => {
     <div className="max-w-[1800px] m-auto px-4  md:py-20 dark:text-white dark:bg-black">
       {/* Heading */}
       <div ref={ref.head} className="pb-20">
-        <h1 className="text-2xl md:text-4xl font-semibold text-center ">
+        <h1 className="text-3xl md:text-4xl  lg:text-5xl text-textcolor font-semibold text-center ">
           Apply Now to Start
           <span className="text-secondary "> Your Career</span>
         </h1>
