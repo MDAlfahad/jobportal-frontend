@@ -2,6 +2,7 @@
 import { SlNotebook } from "react-icons/sl";
 import userJobApplicaiton from "../../../../Store/userJobApplicaiton";
 import { useEffect } from "react";
+import { GoDotFill } from "react-icons/go";
 
 const StudentForms = () => {
   const { applications, fetchMyApplications } = userJobApplicaiton();
@@ -39,14 +40,14 @@ const StudentForms = () => {
                 <tr
                 key={item.job_applicaiton_id || index}
                 className="text-center w-full bg-white  dark:bg-gray-900  ">  
-                  <td className="py-4">{item.company_name}</td>
+                  <td className="py-4 capitalize  ">{item.company_name}</td>
                   <td className="py-4">{item.job_desigination}</td>
                   <td className="py-4">{item.applied_at ? new Date(item.applied_at).toLocaleDateString() : "N/A"}</td>
                   <td className="py-4">
-                    <p className="border rounded-full py-1">{item.status}</p>
+                    <p className="border rounded-full py-1 flex items-center justify-center gap-2 ">{item.status ==="pending" ? <GoDotFill color="red"/> : <GoDotFill color="green  "/>}{item.status}</p>
                   </td>
                   <td className="py-4 items-center flex justify-center">
-                    <SlNotebook size={22} className="text-blue-400 " />
+                    <SlNotebook   size={22} />
                   </td>
                 </tr>
               ))}

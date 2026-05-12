@@ -49,7 +49,7 @@ const CrauselContainer = () => {
   useAnimate(ref.box, { y: 100 });
 
   return (
-    <div className="max-w-[1800px] m-auto px-4  md:py-20 dark:text-white dark:bg-black">
+    <div className="max-w-[1800px] m-auto px-4 py-10      md:py-20 dark:text-white dark:bg-black">
       {/* Heading */}
       <div ref={ref.head} className="pb-20">
         <h1 className="text-3xl md:text-4xl  lg:text-5xl text-textcolor font-semibold text-center ">

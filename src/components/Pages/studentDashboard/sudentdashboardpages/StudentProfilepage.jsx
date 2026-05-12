@@ -31,7 +31,7 @@ const StudentProfilePage = () => {
       setIsData({
         name: user?.user_name || "",
         email: user?.user_email || "",
-        contact: user?.user_contact || "",
+        contact: user?.user_phone || "",
         address: user?.user_address || "",
       });
     }
@@ -281,7 +281,7 @@ const StudentProfilePage = () => {
 
                 <input
                   type="text"
-                  value={user?.user_contact || ""}
+                  value={user?.user_phone || ""}
                   readOnly
                   className="w-full md:w-60 border dark:boder-gray-500 bg-transparent px-2 py-1 rounded-sm dark:border-gray-500 outline-secondary"
                 />

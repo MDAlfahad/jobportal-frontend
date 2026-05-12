@@ -94,14 +94,14 @@ const JobPageCard = ({
           </p>
           <p className="flex items-center md:gap-2 text-[10px] lg:text-[12px] border bg-gray-100 rounded-sm px-2 py-1 dark:bg-gray-900">
             {" "}
-            <Zap strokeWidth={1.5} className="text-primary" size={18} />
+            <Zap strokeWidth={1.5} className="text-primary" size={15} />
             Be Early
           </p>
           <p
-            className="px-1 py-1 flex items-center gap-2 text-sm md:text-[14px] bg-gray-100 rounded-sm dark:bg-gray-900"
+            className="px-2 py-1 flex items-center gap-2 text-sm md:text-[14px] bg-gray-100 rounded-sm dark:bg-gray-900"
             onClick={handleclick}
           >
-            {Click ? <FaRegBookmark /> : <FaBookmark />}
+            {Click ? <FaRegBookmark size={16}/> : <FaBookmark size={16} />}
           </p>
           </div>
           <Button
