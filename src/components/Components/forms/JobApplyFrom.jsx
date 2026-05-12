@@ -67,7 +67,7 @@ const JobApplyForm = ({ className, onClose }) => {
     formData.append("userId", user?.user_id || "");
     formData.append("companyId", isJobData.user_id || "");
     formData.append("companyname", isJobData.company_name || "");
-    formData.append("number", user?.user_phone || "")
+    formData.append("number", user?.user_phone || "");
     formData.append("jobdesigination", isJobData.job_desigination || "");
     formData.append("availability", availability);
     formData.append("travel", travel);
@@ -84,10 +84,9 @@ const JobApplyForm = ({ className, onClose }) => {
       });
 
       if (response.ok) {
+        await apply(); // send mail
         alert("Application submitted successfully!");
         onClose();
-      } else {
-        alert("Failed to submit application.");
       }
     } catch (error) {
       console.error("Submission error:", error);
@@ -116,8 +115,7 @@ const JobApplyForm = ({ className, onClose }) => {
         file: isJobData?.resume_path,
       });
     } catch (error) {
-      alert("apply falied");
-      return;
+      alert(res.data.message || error);
     }
   };
 
@@ -129,7 +127,10 @@ const JobApplyForm = ({ className, onClose }) => {
             <h1 className="text-xl md:text-3xl text-black md:ml-72  font-semibold dark:text-white">
               Applying to {isJobData.job_desigination}
             </h1>
-            <X  className="cursor-pointer text-black dark:text-white" onClick={onClose} />
+            <X
+              className="cursor-pointer text-black dark:text-white"
+              onClick={onClose}
+            />
           </div>
 
           <div className="flex flex-col gap-2 p-8 ">
@@ -162,7 +163,7 @@ const JobApplyForm = ({ className, onClose }) => {
             <div className="md:flex gap-6">
               <div className="flex gap-6">
                 <div className="flex gap-2 rounded-sm items-center px-2 text-[14px] bg-green-200 text-green-500 ">
-                  <History size={16}  strokeWidth={1.5} />
+                  <History size={16} strokeWidth={1.5} />
                   {formattedDate}
                 </div>
                 <span className="flex items-center gap-2 px-2 text-[14px] bg-orange-200 text-orange-800 rounded-sm">
@@ -185,13 +186,17 @@ const JobApplyForm = ({ className, onClose }) => {
                 About the intership
               </h1>
               <div>
-                <h1 className="text-black font-semibold dark:text-white">Role Overview</h1>
+                <h1 className="text-black font-semibold dark:text-white">
+                  Role Overview
+                </h1>
                 <p className="text-sm md:text-[14px] text-textcolor2 dark:text-white">
                   {isJobData.job_description}
                 </p>
               </div>
               <div>
-                <h1 className="text-black font-semibold dark:text-white">Requirements</h1>
+                <h1 className="text-black font-semibold dark:text-white">
+                  Requirements
+                </h1>
                 <p className="text-[14px]  text-textcolor2 dark:text-white">
                   Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit
                   error obcaecati quidem nobis, possimus beatae ipsum aliquam
@@ -205,7 +210,9 @@ const JobApplyForm = ({ className, onClose }) => {
                 </h1>
                 <span className="flex gap-2 items-center text-black font-semibold dark:text-white">
                   Stipend :{" "}
-                  <p className=" text-textcolor2 text-[14px] dark:text-white">₹ {isJobData.job_ctc}</p>
+                  <p className=" text-textcolor2 text-[14px] dark:text-white">
+                    ₹ {isJobData.job_ctc}
+                  </p>
                 </span>
               </div>
               <div className="flex flex-col gap-2 ">
@@ -237,7 +244,9 @@ const JobApplyForm = ({ className, onClose }) => {
                   value="immediate"
                   onChange={(e) => setAvailability(e.target.value)}
                 />
-                <p  className="text-[14px]">Yes, I am available to join immediately</p>
+                <p className="text-[14px]">
+                  Yes, I am available to join immediately
+                </p>
               </label>
               <label className="flex gap-2 items-center text-[16px] cursor-pointer">
                 <input
@@ -246,7 +255,9 @@ const JobApplyForm = ({ className, onClose }) => {
                   value="later"
                   onChange={(e) => setAvailability(e.target.value)}
                 />
-                <p className="text-[14px]">No, talk and select the date of joining</p>
+                <p className="text-[14px]">
+                  No, talk and select the date of joining
+                </p>
               </label>
               <label className="flex gap-2 items-center text-[16px] cursor-pointer">
                 <input
@@ -255,7 +266,9 @@ const JobApplyForm = ({ className, onClose }) => {
                   value="other"
                   onChange={(e) => setAvailability(e.target.value)}
                 />
-                <p  className="text-[14px]">Other, please specify your availability</p>
+                <p className="text-[14px]">
+                  Other, please specify your availability
+                </p>
               </label>
             </div>
 
@@ -293,14 +306,14 @@ const JobApplyForm = ({ className, onClose }) => {
                 </p>
                 <div className="flex gap-2 items-center">
                   <input
-                  type="text"
-                  min="0"
-                  value={experience}
-                  onChange={(e) => setExperience(e.target.value)}
-                  placeholder="Enter numeric value"
-                  className="outline-none border p-2 rounded-md w-48 bg-white dark:bg-black/30 text-[14px]"
-                />
-                <p className="text-[14px] text-[red]">Freshers Type NA</p>
+                    type="text"
+                    min="0"
+                    value={experience}
+                    onChange={(e) => setExperience(e.target.value)}
+                    placeholder="Enter numeric value"
+                    className="outline-none border p-2 rounded-md w-48 bg-white dark:bg-black/30 text-[14px]"
+                  />
+                  <p className="text-[14px] text-[red]">Freshers Type NA</p>
                 </div>
               </div>
             </div>
@@ -336,7 +349,6 @@ const JobApplyForm = ({ className, onClose }) => {
                 type="submit"
                 disabled={isSubmitting}
                 className="px-6 py-2 bg-secondary text-white rounded-sm hover:bg-textcolor disabled:bg-gray-400 "
-                onClick={apply}
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
