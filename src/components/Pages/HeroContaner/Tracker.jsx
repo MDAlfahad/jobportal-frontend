@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import useAnimate from "../../../Store/animation";
 import Image2 from "../../images/golife2.png";
+import TopBar from "../../Components/Adsbars/TopBar";
 
 const Traker = () => {
   const head = useRef();
@@ -33,7 +34,7 @@ const Traker = () => {
         <div>
           <p
             ref={para}
-            className="text-sm md:text-[14px] font-light text-center"
+            className="text-sm md:text-[14px] font-light text-center mb-10"
           >
             job portal is designed to elevate careers and connect talent with
             opportunity. It serves as a bridge between ambitious job seekers and
@@ -43,7 +44,8 @@ const Traker = () => {
             step in their professional journey while helping organizations
             discover the right talent to move their business forward.
           </p>
-          <p className="text-sm font-extralight md:mt-32 py-6">
+          <TopBar/>
+          <p className="text-sm font-extralight md:mt-28 py-6">
             _Your dream, we Work , get your chance.
           </p>
         </div>

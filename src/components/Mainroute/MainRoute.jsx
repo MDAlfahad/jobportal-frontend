@@ -26,6 +26,7 @@ const MainRoute = () => {
   return (
     <Router>
       <ScrollTopTop />
+    
       <Navbar />
 
       <Routes>

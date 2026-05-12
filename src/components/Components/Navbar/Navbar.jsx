@@ -28,7 +28,7 @@ const Navbar = ({ }) => {
 
   useEffect(() => {
     const handlescroll = () => {
-      if (window.scrollY > 200) {
+      if (window.scrollY > 300) {
         SetScroll(true);
       } else {
         SetScroll(false);
@@ -76,6 +76,7 @@ const Navbar = ({ }) => {
     <div
       className={`w-full fixed z-50 transition-all duration-300 ${scroll ? "bg-white border shadow-sm  dark:bg-black dark:border-black dark:text-white" : "bg-transparent border border-transparent"}`}
     >
+     
       <div className="max-w-[1800px] m-auto px-6 md:px-12 py-[15px] text-textcolor dark:text-white flex justify-between items-center relative">
         <div className="flex gap-5 lg:gap-20 items-center">
           <h1
