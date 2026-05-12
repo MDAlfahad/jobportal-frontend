@@ -103,21 +103,7 @@ const JobApplyForm = ({ className, onClose }) => {
     { addSuffix: true },
   );
 
-  // Send  Mail
-  const apply = async () => {
-    try {
-      const res = await axios.post(`${API}/api/sendMail`, {
-        name: user?.user_name,
-        email: user?.user_email,
-        position: isJobData.job_desigination,
-        companyName: isJobData.company_name,
-        companyEmail: isJobData.company_email,
-        file: isJobData?.resume_path,
-      });
-    } catch (error) {
-      alert("Faild to send mail");
-    }
-  };
+  
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-sm overflow-y-auto z-50 ">
