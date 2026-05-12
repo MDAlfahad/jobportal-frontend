@@ -89,7 +89,7 @@ const JobApplyForm = ({ className, onClose }) => {
         onClose();
       }
     } catch (error) {
-      console.error("Submission error:", error);
+      // console.error("Submission error:", error);
       alert("An error occurred during submission.");
     } finally {
       setIsSubmitting(false);
@@ -115,7 +115,7 @@ const JobApplyForm = ({ className, onClose }) => {
         file: isJobData?.resume_path,
       });
     } catch (error) {
-      alert(res.data.message || error);
+      alert("Faild to send mail");
     }
   };
 
