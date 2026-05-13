@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuthStore from "../../../../Store/userAuth";
 import axios from "axios";
 import Button from "../../../Components/buttons/ButtonComponents";
@@ -6,11 +6,27 @@ import Button from "../../../Components/buttons/ButtonComponents";
 const CompanyFrom = () => {
   const API = import.meta.env.VITE_API_URL;
   const { user } = useAuthStore();
+
   const [image, setImage] = useState(null);
+
   const [data, setdata] = useState({
+    name: "",
+    email: "",
     address: "",
     number: "",
   });
+
+  useEffect(() => {
+    if (user) {
+      setdata({
+        name: user?.user_name || "",
+        email: user?.user_email || "",
+        address: user?.user_address || "",
+        number: user?.user_phone || "",
+      });
+    }
+  }, [user]);
+
   const handletext = (e) => {
     setdata({
       ...data,
@@ -20,93 +36,128 @@ const CompanyFrom = () => {
 
   const handleImage = (e) => {
     const file = e.target.files[0];
+
     if (file) {
       setImage(file);
     }
   };
 
   const handlesubmit = async () => {
-    if (!image) return alert("select Image");
+    // if (!image) return alert("Select Company Logo");
 
     const formData = new FormData();
+
     formData.append("image", image);
+    formData.append("name", data.name);
+    formData.append("email", data.email);
     formData.append("address", data.address);
     formData.append("number", data.number);
     formData.append("userId", user?.user_id);
 
     try {
-      const res = await axios.post(
-        `${API}/api/companyDetails`,
-        formData,
-      );
-      alert("Form Submited");
+      await axios.post(`${API}/api/companyDetails`, formData);
+      alert("Update Successfully");
     } catch (err) {
       console.log(err);
+      alert("Something went wrong");
     }
   };
 
   return (
     <>
-      <div className=" w-[700px] rounded-md  text-textcolor flex flex-col items-center dark:bg-gray-900 dark:backdrop-blur dark:text-white">
-        <h1 className="text-2xl md:text-4xl font-semibold text-black py-10 dark:text-white">
-          Personal Details
-        </h1>
-        <div className=" gap-2 w-full border dark:border-none flex flex-col text-left p-4 text-sm dark:text-white ">
-          <label className="font-medium" htmlFor="company">
-            Full name
-          </label>
-          <input
-            className="border rounded-sm px-2 py-2 outline-none text-textcolor  dark:bg-gray-900"
-            type="text"
-            readOnly
-            value={user?.user_name}
-            placeholder="Full name"
-            required
-          />
+      <div className="w-full max-w-[700px] mx-auto rounded-sm border bg-white dark:bg-gray-900 dark:border-gray-700 dark:text-white overflow-hidden">
+        
+        <div className="px-6 py-8 dark:border-gray-700">
+          <h1 className="text-3xl md:text-4xl font-bold text-center">
+            Personal Details
+          </h1>
+          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-2">
+            Update your company profile information
+          </p>
+        </div>
 
-          <label className="font-medium" htmlFor="email">
-            E-mail
-          </label>
-          <input
-            className="border rounded-sm px-2 py-2 outline-none  text-textcolor2 dark:bg-gray-900"
-            type="email"
-            readOnly
-            placeholder="Company email"
-            value={user?.user_email}
-            required
-          />
+        
+        <div className="flex flex-col gap-5 p-6 text-[14px]">
 
-          <label className="font-medium" htmlFor="Address">
-            Company address
-          </label>
-          <input
-            className="border rounded-sm px-2 py-2 outline-none  text-textcolor2 dark:bg-gray-900"
-            type="text"
-            id="address"
-            placeholder="Address"
-            onChange={handletext}
-            value={data.address}
-            required
-          />
+          
+          <div className="flex flex-col gap-2">
+            <label className="font-regular text-[14xpx]">
+              Full Name
+            </label>
 
-          <label className="font-medium" htmlFor="phone">
-            Mobile Number
-          </label>
-          <input
-            className="border rounded-sm px-2 py-2 outline-none  text-textcolor2 dark:bg-gray-900"
-            type="tel"
-            id="number"
-            onChange={handletext}
-            value={data.number}
-            placeholder="Contact number"
-          />
-          <div className="py-4 ">
-            <label
-              htmlFor="file"
-              className=" font-medium items-center gap-2 border-dashed border-2 border-secondary  justify-center px-2 py-2 bg-lightblue text-textcolor cursor-pointer"
-            >
+            <input
+              className="border rounded-sm border-textcolor2 px-2 py-2 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-600"
+              type="text"
+              id="name"
+              value={data.name}
+              placeholder="Enter full name"
+              onChange={handletext}
+            />
+          </div>
+
+          
+          <div className="flex flex-col gap-2">
+            <label className="font-medium text-sm">
+              E-mail
+            </label>
+
+            <input
+              className="border border-textcolor2 rounded-sm px-2 py-2 outline-none bg-gray-100 dark:bg-gray-800 dark:border-gray-600 cursor-not-allowed"
+              type="email"
+              id="email"
+              readOnly
+              value={data.email}
+              placeholder="Company email"
+            />
+          </div>
+
+      
+          <div className="flex flex-col gap-2">
+            <label className="font-medium text-sm">
+              Company Address
+            </label>
+
+            <input
+              className="border border-textcolor2 rounded-sm px-2 py-2 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-600"
+              type="text"
+              id="address"
+              placeholder="Enter address"
+              onChange={handletext}
+              value={data.address}
+            />
+          </div>
+
+        
+          <div className="flex flex-col gap-2">
+            <label className="font-medium text-sm">
+              Mobile Number
+            </label>
+
+            <input
+              className="border border-textcolor2 rounded-sm px-2 py-2 outline-none transition-all duration-200 focus:ring-2 focus:ring-blue-400 dark:bg-gray-800 dark:border-gray-600"
+              type="tel"
+              id="number"
+              onChange={handletext}
+              value={data.number}
+              placeholder="Enter contact number"
+            />
+          </div>
+
+          
+          <div className="flex flex-col gap-3">
+            <label className="font-medium text-sm">
               Upload Company Logo
             </label>
+
+            <label
+              htmlFor="file"
+              className="border-2 border-textcolor2  border-dashed rounded-sm p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
+            >
+              <span className="text-sm text-textcolor dark:text-gray-400">
+                {image ? image.name : "Click to upload image"}
+              </span>
+            </label>
+
             <input
               type="file"
               id="file"
@@ -115,7 +166,9 @@ const CompanyFrom = () => {
               accept="image/*"
             />
           </div>
-          <div>
+
+          
+          <div className="pt-2">
             <Button text="Submit" onClick={handlesubmit} />
           </div>
         </div>
@@ -123,5 +176,4 @@ const CompanyFrom = () => {
     </>
   );
 };
-
 export default CompanyFrom;

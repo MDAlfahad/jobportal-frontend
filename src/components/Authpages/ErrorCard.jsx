@@ -3,7 +3,7 @@ const Errorcard = ({ head, onclick, para, image }) => {
   return (
     <div
       className={
-        "px-6 py-4 h-30 rounded-xl bg-secondary/30  border-t-[10px] border-secondary flex flex-col justify-center items-center backdrop-blur-xl dark:bg-gray-900 dark:border-none dark:text-white "
+        "px-6 py-4 w-72 md:w-80 h-30 rounded-xl bg-secondary/30  border-t-[10px] border-secondary flex flex-col justify-center items-center backdrop-blur-xl dark:bg-gray-900 dark:border-none dark:text-white "
       }
     >
       <div className="flex items-center gap-4">

@@ -31,7 +31,7 @@ const Hero = () => {
   return (
     <>
       <div className="w-full max-w-[1800px] m-auto mainbackground noselect capitalize">
-        <div className="w-full md:px-4 lg:px-12 py-4 md:py-6 lg:py-10 px-4 text-center flex flex-col justify-center  lg:h-auto">
+        <div className="w-full md:px-4 lg:px-12 py-4 md:py-6 lg:py-10 px-4 text-center flex flex-col justify-center md:h-[90vh]  2xl:h-auto">
           <div className="flex flex-col items-center py-28">
             <h1
             ref={ref.head}

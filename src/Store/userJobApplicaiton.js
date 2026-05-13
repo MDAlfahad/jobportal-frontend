@@ -15,16 +15,17 @@ const userJobApplicaiton = create((set, get) => ({
       set({ loading: true, error: null });
 
       const token = useAuthStore.getState().token;
-
       const res = await axios.get(`${API}/api/my-applications`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        
       });
-       
+
       
       set({
         applications: res.data.applications,
+        
         pagination: {
           page: res.data.page,
           limit: res.data.limit,

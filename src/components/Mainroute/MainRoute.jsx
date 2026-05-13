@@ -15,20 +15,34 @@ import JobPageRoute from "../Pages/jobpages/JobpageDetals/JobPageRoute";
 import ProtectedRoute from "../../protectetroutes/ProtectedRoute";
 import NotFound404 from "../404NotFound/NotFound404";
 import ContactPage from "../Pages/ContactPage/ContactPage";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import useThemeStore from "../../Store/lightDarkmode";
+import TopBar from "../Components/Adsbars/TopBar";
+import useAnimate from "../../Store/animation";
 
 const MainRoute = () => {
-  
-  useThemeStore.getState().setTheme(
-  useThemeStore.getState().theme
-);
+  useEffect(() => {
+  const { theme, setTheme } = useThemeStore.getState();
+
+  setTheme(theme);
+}, []);
+
+  const [show, setShow] = useState(false);
+
+  const handleshow = () => {
+    setTimeout(() => {
+      setShow(!show);
+    }, 2000);
+  };
+
   return (
     <Router>
       <ScrollTopTop />
-    
-      <Navbar />
 
+      <Navbar />
+      <div className={`${show ? "hidden " : "fixed bottom-5 right-2 z-50"} `}>
+        <TopBar onClick={handleshow} />
+      </div>
       <Routes>
         {/* --- Public Routes --- */}
         <Route path="/" element={<Hero />} />

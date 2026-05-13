@@ -63,11 +63,11 @@ const CompanySignupPage = () => {
   return (
     <>
       <div className="max-w-[1800px] m-auto  w-full noselect    ">
-        <div className="w-full md:h-[100vh] lg:h-auto bg-secondary py-10 md:pt-20 md:flex justify-between px-4 md:px-12 items-center overflow-hidden dark:bg-black">
+        <div className="w-full md:h-[100vh] lg-auto bg-secondary py-10 md:pt-20 md:flex justify-between px-4 md:px-12 items-center overflow-hidden dark:bg-black">
           <div>
             <div className="mt-10">
               <h1 className="text-3xl md:text-4xl lg:text-6xl text-white font-semibold ">
-                Start hireing now
+                Start hiring now
               </h1>
               <p className="text-sm lg:text-md text-white py-2">
                 Hire students from top Colleges and Universities

@@ -31,7 +31,7 @@ const AdminProfilePage = () => {
         <div className="mt-16 md:mt-20 px-2 md:px-6 py-4 rounded-xl">
           
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
             
             <AdminProfileCard
               heading="Total user"
@@ -74,22 +74,22 @@ const AdminProfilePage = () => {
             <div className="flex flex-col md:flex-row gap-4 md:gap-20 px-2 mt-4">
               
               <div>
-                <p className="text-sm md:text-md text-textcolor2">Name</p>
-                <p className="text-base md:text-[14px] font-medium p-1 break-words">
+                <p className="text-sm md:text-md text-textcolor">Name</p>
+                <p className="text-base md:text-[14px] font-medium p-1 break-words text-textcolor">
                   {user?.user_name || "Loading...."}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm md:text-md text-textcolor2">Email</p>
-                <p className="text-base md:text-[14px] font-medium p-1 break-words">
+                <p className="text-sm md:text-md text-textcolor">Email</p>
+                <p className="text-base md:text-[14px] font-medium p-1 break-words text-textcolor">
                   {user?.user_email || "Loading...."}
                 </p>
               </div>
 
               <div>
-                <p className="text-sm md:text-md text-textcolor2">Admin</p>
-                <p className="text-base md:text-[14px] font-medium p-1 break-words">
+                <p className="text-sm md:text-md text-textcolor">Admin</p>
+                <p className="text-base md:text-[14px] font-medium p-1 break-words text-textcolor">
                   {user?.auth_role || "Loading...."}
                 </p>
               </div>

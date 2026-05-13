@@ -44,7 +44,6 @@ const Traker = () => {
             step in their professional journey while helping organizations
             discover the right talent to move their business forward.
           </p>
-          <TopBar/>
           <p className="text-sm font-extralight md:mt-28 py-6">
             _Your dream, we Work , get your chance.
           </p>

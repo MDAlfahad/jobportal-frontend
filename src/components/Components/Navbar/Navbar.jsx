@@ -8,8 +8,7 @@ import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import Dummy from "../../images/dummyimage.png";
 import Button from "../buttons/ButtonComponents";
 
-
-const Navbar = ({ }) => {
+const Navbar = ({}) => {
   // const API_CALL = `http://localhost:4000`;
   const API = import.meta.env.VITE_API_URL;
   const dropdownRef = useRef();
@@ -18,6 +17,36 @@ const Navbar = ({ }) => {
   // ------ toggle button
   const [isClick, setIsClick] = useState(false);
   const [scroll, SetScroll] = useState(false);
+
+  //user avatar
+
+  const getAvatar = (name) => {
+    if (!name) return "";
+    const words = name.trim().split(" ");
+
+    if (words.length === 1) return words[0][0].toUpperCase();
+    return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+  };
+
+  const colors = [
+    "bg-red-400",
+    "bg-blue-400",
+    "bg-green-400",
+    "bg-yellow-400",
+    "bg-pink-400",
+    "bg-purple-400",
+    "bg-indigo-400",
+    "bg-orange-400",
+  ];
+
+  const randomColor = (color) => {
+    if (!color) return "bg-gray-500";
+
+    const index = color.charCodeAt(0) % colors.length;
+    return colors[index];
+  };
+
+  //loaout
 
   const logout = useAuthStore((state) => state.logout);
   const handlelogout = () => {
@@ -45,17 +74,14 @@ const Navbar = ({ }) => {
   const [isUser, setIsUser] = useState(false);
   const { theme, toggleTheme } = useThemeStore();
 
-  // drop down menu 
+  // drop down menu
   const userclick = () => {
     setIsUser((show) => !show);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsUser(false);
       }
     };
@@ -76,8 +102,7 @@ const Navbar = ({ }) => {
     <div
       className={`w-full fixed z-50 transition-all duration-300 ${scroll ? "bg-white border shadow-sm  dark:bg-black dark:border-black dark:text-white" : "bg-transparent border border-transparent"}`}
     >
-     
-      <div className="max-w-[1800px] m-auto px-6 md:px-12 py-[15px] text-textcolor dark:text-white flex justify-between items-center relative">
+      <div className="max-w-[1800px] w-full m-auto px-6 md:px-12 py-[15px] text-textcolor dark:text-white flex justify-between items-center relative">
         <div className="flex gap-5 lg:gap-20 items-center">
           <h1
             className="text-2xl lg:text-3xl font-bold cursor-pointer"
@@ -87,11 +112,14 @@ const Navbar = ({ }) => {
           </h1>
           {/* Desktop nav  */}
 
-          {user?.auth_role === "admin" || user?.auth_role === "company" ? "" :
+          {user?.auth_role === "admin" || user?.auth_role === "company" ? (
+            ""
+          ) : (
             <div className="hidden md:flex gap-5 lg:gap-10">
               <NavLink
                 className={({ isActive }) =>
-                  `relative px-2  ${isActive ? "text-secondary after:w-full" : "after:w-0"
+                  `relative px-2  ${
+                    isActive ? "text-secondary after:w-full" : "after:w-0"
                   } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
                 }
                 to="/"
@@ -100,9 +128,10 @@ const Navbar = ({ }) => {
               </NavLink>
               <NavLink
                 className={({ isActive }) =>
-                  `relative px-2  ${isActive
-                    ? "text-secondary after:w-full duration-300"
-                    : "after:w-0"
+                  `relative px-2  ${
+                    isActive
+                      ? "text-secondary after:w-full duration-300"
+                      : "after:w-0"
                   } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all `
                 }
                 to="/job-page"
@@ -112,53 +141,54 @@ const Navbar = ({ }) => {
 
               <NavLink
                 className={({ isActive }) =>
-                  `relative px-2 ${isActive
-                    ? "text-secondary after:w-full transition-all duration-300"
-                    : "after:w-0 "
+                  `relative px-2 ${
+                    isActive
+                      ? "text-secondary after:w-full transition-all duration-300"
+                      : "after:w-0 "
                   } after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-secondary after:transition-all duration-300`
                 }
                 to="/contact"
               >
                 Contact
               </NavLink>
-            </div>}
+            </div>
+          )}
         </div>
 
-
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
+          <p className="text-secondary hidden md:block md:text-[14px] capitalize font-regular  dark:text-white px-2 py-1">
+            {user?.user_name}
+          </p>
 
           {!isAuthenticated && (
-            <div className="hidden md:block"><Button
-              text="Sign Up"
-              onClick={() => navigate("login-page")}
-            /></div>
-
+            <div className="hidden md:block">
+              <Button text="Sign Up" onClick={() => navigate("login-page")} />
+            </div>
           )}
-          {/* <div
-            className="md:block bg-lightblue p-2 text-textcolor rounded-full cursor-pointer hover:bg-white hover:text-secondary transition duration-300"
-            onClick={() => navigate("/notification")}
-          >
-            <Bell strokeWidth={1.5} />
-          </div> */}
           <div
             onClick={userclick}
-            className={`md:block bg-lightblue text-textcolor border-2 border-lightblue rounded-full cursor-pointer hover:bg-white hover:text-secondary transition overflow-hidden
-              ${!role
-                ? " p-2"
-                : " bg-lightblue"
-              }`}
+            className={`md:block bg-lightblue text-textcolor border-2 border-gray-200 rounded-full cursor-pointer hover:bg-white transition overflow-hidden
+  ${!role ? "p-2" : "bg-lightblue"}`}
           >
             {!role ? (
               <UserRound strokeWidth={1.5} />
-            ) : (
+            ) : user?.user_image ? (
               <img
-                src={
-                  user?.user_image ? `${API}/uploads/${user?.user_image}` : Dummy}
-                alt=""
-                className="w-10 h-10 object-cover"
+                src={`${API}/uploads/${user?.user_image}`}
+                alt="profile"
+                className="w-10 h-10 rounded-full object-cover"
               />
+            ) : (
+              <div
+                className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-white text-lg ${randomColor(
+                  user?.user_name,
+                )}`}
+              >
+                {getAvatar(user?.user_name)}
+              </div>
             )}
           </div>
+
           <div className="flex md:hidden">
             <HiOutlineBars3BottomRight
               onClick={toggle}
@@ -189,14 +219,13 @@ const Navbar = ({ }) => {
                       ? "/Dashboard-Company"
                       : "/student-Dashboard"
                 }
-
                 onClick={() => setIsClick(false)}
                 className="px-4 py-2 hover:bg-secondary hover:text-white "
               >
                 DashBoard
               </Link>
             )}
-            {isAuthenticated &&
+            {isAuthenticated && (
               <button
                 type="button"
                 className="w-full px-4 py-2 text-left outline-none border-none hover:bg-secondary hover:text-white"
@@ -204,10 +233,9 @@ const Navbar = ({ }) => {
               >
                 Logout
               </button>
-            }
+            )}
           </div>
         </div>
-
 
         {/* mobilemenu */}
 
@@ -233,7 +261,6 @@ const Navbar = ({ }) => {
           >
             Contact
           </Link>
-
         </div>
       </div>
     </div>
