@@ -28,7 +28,7 @@ const UserCredentialdata = () => {
 
         <div className="w-full border rounded-md overflow-x-auto dark:border-none">
           <table className="w-full min-w-[600px]">
-            <thead className="bg-gray-200 text-textcolor dark:bg-gray-900  dark:text-white">
+            <thead className="bg-gray-200 text-textcolor dark:border-b dark:border-secondary dark:bg-gray-900  dark:text-white">
               <tr>
                 <th className="ppy-2  font-semibold text-sm ">
                   Name

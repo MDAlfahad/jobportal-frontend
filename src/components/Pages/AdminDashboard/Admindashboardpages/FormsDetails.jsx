@@ -26,9 +26,9 @@ const FormsDetails = () => {
       </div>
 
       {/* Table */}
-      <div className="w-full overflow-x-auto border rounded-xl shadow-sm">
+      <div className="w-full overflow-x-auto  rounded-xl shadow-sm">
         <table className="w-full min-w-[700px] text-sm">
-          <thead className="bg-gray-200 dark:bg-gray-900 dark:text-white">
+          <thead className="bg-gray-200 dark:bg-gray-900 dark:border-b dark:border-secondary dark:text-white">
             <tr>
               <th className="py-3 px-4 font-medium text-left">Email</th>
 

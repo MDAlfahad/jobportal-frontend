@@ -103,9 +103,9 @@ const CompanyData = () => {
             </h1>
           </div>
 
-          <div className="w-full border rounded-md overflow-hidden">
+          <div className="w-full rounded-md overflow-hidden">
             <table className="w-full">
-              <thead className="bg-gray-200 dark:bg-gray-900 dark:border-b dark:border-gray-500">
+              <thead className="bg-gray-200 dark:bg-gray-900 dark:border-b dark:border-secondary">
                 <tr >
                   <th className="py-2 text-sm font-medium">Name</th>
                   <th className="py-2 text-sm font-medium">Email</th>
