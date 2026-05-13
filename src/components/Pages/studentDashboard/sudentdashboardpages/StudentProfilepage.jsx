@@ -4,7 +4,6 @@ import Button from "../../../Components/buttons/ButtonComponents";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import useAuthStore from "../../../../Store/userAuth";
-import Dummy from "../../../images/dummyimage.png";
 const StudentProfilePage = () => {
   // const API_CALL = `http://localhost:4000`;
   const API = import.meta.env.VITE_API_URL;
@@ -15,8 +14,34 @@ const StudentProfilePage = () => {
   const [showData, setShowData] = useState([]);
   const [image, setImage] = useState(null);
   const hideref = useRef();
-  const{token}  =useAuthStore();
+  const { token } = useAuthStore();
   const hidebioref = useRef();
+  //avatar designs
+  const getAvatar = (name) => {
+    if (!name) return "";
+    const words = name.trim().split(" ");
+
+    if (words.length === 1) return words[0][0].toUpperCase();
+    return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+  };
+
+  const colors = [
+    "bg-red-400",
+    "bg-blue-400",
+    "bg-green-400",
+    "bg-yellow-400",
+    "bg-pink-400",
+    "bg-purple-400",
+    "bg-indigo-400",
+    "bg-orange-400",
+  ];
+
+  const randomColor = (color) => {
+    if (!color) return "bg-gray-500";
+
+    const index = color.charCodeAt(0) % colors.length;
+    return colors[index];
+  };
 
   const [isData, setIsData] = useState({
     name: "",
@@ -24,6 +49,7 @@ const StudentProfilePage = () => {
     address: "",
   });
 
+  //data preview
   const [preview, setPreview] = useState(null);
 
   useEffect(() => {
@@ -41,8 +67,8 @@ const StudentProfilePage = () => {
 
     try {
       const res = await axios.post(`${API}/api/user-details`, isData, {
-        method: "POST", 
-        headers :{
+        method: "POST",
+        headers: {
           Authorization: `Bearer ${token}`,
         },
       });
@@ -207,17 +233,23 @@ const StudentProfilePage = () => {
           <div className="w-full md:flex p-6 gap-10 bg-white rounded-md md:rounded-xl dark:bg-gray-900 ">
             <div className="flex flex-col items-center justify-center gap-2 ">
               <div className="w-[200px] h-[200px] md:w-[100px] lg:w-[150px] lg:h-[150px] overflow-hidden bg-gray-200 rounded-lg">
-                <img
-                  className="w-full h-full object-contain"
-                  src={
-                    preview
-                      ? preview
-                      : user?.user_image
-                        ? `${API}/uploads/${user?.user_image}`
-                        : Dummy
-                  }
-                  alt="profile"
-                />
+                {preview || user?.user_image ? (
+                  <img
+                    className="w-full h-full object-contain"
+                    src={
+                      preview ? preview : `${API}/uploads/${user?.user_image}`
+                    }
+                    alt="profile"
+                  />
+                ) : (
+                  <div
+                    className={`w-full h-full flex items-center justify-center font-semibold text-white text-3xl ${randomColor(
+                      user?.user_name,
+                    )}`}
+                  >
+                    {getAvatar(user?.user_name)}
+                  </div>
+                )}
               </div>
               <div className="lg:flex items-center flex gap-2 py-2">
                 <input
