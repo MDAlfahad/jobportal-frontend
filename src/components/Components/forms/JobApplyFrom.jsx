@@ -84,13 +84,16 @@ const JobApplyForm = ({ className, onClose }) => {
       });
 
       if (response.ok) {
-        await apply(); // send mail
+        // Email sending temporarily disabled
+        // await apply();
+
         alert("Application submitted successfully!");
         onClose();
+      } else {
+        alert("Failed to submit application");
       }
     } catch (error) {
-      // console.error("Submission error:", error);
-      alert("An error occurred during submission.");
+      return err;
     } finally {
       setIsSubmitting(false);
     }
@@ -102,8 +105,6 @@ const JobApplyForm = ({ className, onClose }) => {
     new Date(isJobData.posted_at.replace(" ", "T")),
     { addSuffix: true },
   );
-
-  
 
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black/40 backdrop-blur-sm overflow-y-auto z-50 ">
