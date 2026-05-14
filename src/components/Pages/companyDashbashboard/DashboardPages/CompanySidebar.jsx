@@ -80,7 +80,7 @@ const CompanySidebar = ({ setActivePage, activePage }) => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 mt-auto w-full items-start pt-2">
+        <div className="flex flex-col gap-2 md:h-60 w-full items-start pt-2">
 
           <div onClick={toggleTheme} className={`${menuClass("mode")} w-full`}>
             {theme === "light" ? (
@@ -93,7 +93,7 @@ const CompanySidebar = ({ setActivePage, activePage }) => {
           </div>
           <div
             onClick={handlelogout}
-            className="flex mt-auto gap-3 px-4 py-3 items-center w-full cursor-pointer hover:bg-gray-200 rounded-md dark:hover:bg-secondary"
+            className="flex gap-3 px-4 py-3 mt-auto items-center w-full cursor-pointer  hover:bg-gray-200 rounded-md dark:hover:bg-secondary"
             title={!show ? "Logout" : ""}
           >
             <LogOut size={16} />

@@ -62,7 +62,7 @@ const AdminProfilePage = () => {
 
                   <div>
                     <p className="text-sm md:text-md text-textcolor dark:text-white">
-                      Admin
+                      Access
                     </p>
                     <p className="text-base md:text-[14px] font-medium p-1 break-words text-textcolor dark:text-white">
                       {user?.auth_role || "Loading...."}
