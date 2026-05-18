@@ -2,6 +2,7 @@ import { Locate } from "lucide-react";
 import { useState } from "react";
 import { FaLocationArrow, FaRegSun } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
+import { GoTrash } from "react-icons/go";
 import { TfiArrowCircleDown, TfiArrowCircleRight } from "react-icons/tfi";
 
 const JobPostCard = ({
@@ -16,6 +17,7 @@ const JobPostCard = ({
   job_startdate,
   Job_lastdate,
   about_company,
+  Delete,
 }) => {
   const [isShow, setisShow] = useState(false);
 
@@ -31,10 +33,10 @@ const JobPostCard = ({
             <div className="w-2 h-50  bg-secondary"></div>
             <div className="py-4  flex justify-between pl-1 md:pl-3 pr-1 md:pr-6 w-full">
               <div>
-                <h1 className="md:text-xl font-semibold text-secondary">
+                <h1 className="text-[14px] md:text-xl font-semibold text-secondary">
                   {job_desigination}
                 </h1>
-                <p className="text-[12px] md:text-sm text-textcolor2 font-semibold">
+                <p className="text-[10px] md:text-sm text-textcolor2 font-semibold line-clamp-1">
                   {company_name}
                 </p>
                 <p className="text-[12px] md:text-md text-textcolor2 font-semibold flex gap-1 items-center">
@@ -51,13 +53,18 @@ const JobPostCard = ({
                     Apply By: {Job_lastdate}
                   </p>
                 </div>
+                 <div className="md:flex items-center gap-2">
+                  <p className="pb-6 md:pb-0"><GoTrash size={20} color="red" onClick={Delete}/></p>
                 <p onClick={toggleShow}>
+                 
                   {!isShow ? (
                     <TfiArrowCircleRight className="text-2xl text-secondary" />
                   ) : (
                     <TfiArrowCircleDown className="text-2xl text-secondary" />
                   )}
                 </p>
+                 </div>
+                
               </div>
             </div>
           </div>
@@ -77,7 +84,8 @@ const JobPostCard = ({
                     {job_workingtype}
                   </span>
                   <span className="  rounded-md flex text-[14px] font-light flex-col text-center">
-                    <h1 className="font-medium text-[16px]">Annual CTC</h1> {job_ctc}
+                    <h1 className="font-medium text-[16px]">Annual CTC</h1>{" "}
+                    {job_ctc}
                   </span>
                 </div>
                 <hr className="md:none " />
@@ -87,7 +95,8 @@ const JobPostCard = ({
                     {job_experience}
                   </span>
                   <span className="  rounded-md flex text-[14px] font-light flex-col text-center">
-                    <h1 className="font-medium text-[16px]">Last Date</h1> {Job_lastdate}
+                    <h1 className="font-medium text-[16px]">Last Date</h1>{" "}
+                    {Job_lastdate}
                   </span>
                 </div>
               </div>
