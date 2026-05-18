@@ -1,19 +1,23 @@
 # Website Url : - [jobportal](https://jobportaledu.vercel.app)
 
-# React + Vite
+# Frontend Description
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Job Portal Frontend is a responsive web application built with React.js that provides an intuitive interface for job seekers, companies, and administrators. It enables users to browse job listings, apply for jobs, manage profiles, and interact with a modern dashboard experience. The application focuses on smooth user experience, responsive design, and efficient job management workflows.
 
-Currently, two official plugins are available:
+## Features
+User authentication (Login / Signup)
+Browse and search job listings
+Apply for jobs
+Company dashboard for posting and managing jobs
+Admin dashboard for system management
+Responsive UI for mobile and desktop
+Dynamic job cards and application tracking
+Dark mode support
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# jobportal-frontend
+## Tech Stack
+React.js
+Tailwind CSS
+JavaScript
+Axios
+React Router
+Context API / State Management
