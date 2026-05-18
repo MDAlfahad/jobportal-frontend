@@ -20,7 +20,7 @@ const DashboardProfilePage = () => {
   const handleDelete = () => {
     setIsDelete(!isdelete);
   };
-    const handleDeleteJob = async (e, jobId) => {
+    const handleDeleteJob = async (e) => {
       e.preventDefault();
        const job_id = jobs?.job_id
       try {
