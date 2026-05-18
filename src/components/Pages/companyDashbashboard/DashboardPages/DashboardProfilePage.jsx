@@ -15,30 +15,34 @@ const DashboardProfilePage = () => {
   const { jobs, fetchJobs } = useJobStore();
   const navigate = useNavigate();
   const [isdelete, setIsDelete] = useState(false);
- 
-  
-  const handleDelete = () => {
-    setIsDelete(!isdelete);
-  };
-    const handleDeleteJob = async (e) => {
-      e.preventDefault();
-       const job_id = jobs?.job_id
-      try {
-        const res = await axios.post(
-          `${API}/api/delete-job`,
-          { job_id },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
 
-        console.log(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  const [selectedJobId, setSelectedJobId] = useState(null);
+
+  const handleDelete = (jobId) => {
+    setSelectedJobId(jobId);
+    setIsDelete(true);
+  };
+
+  const handleDeleteJob = async () => {
+    try {
+      const res = await axios.post(
+        `${API}/api/delete-job`,
+        { job_id: selectedJobId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      console.log(res.data);
+
+      fetchJobs(token);
+      setIsDelete(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
     if (token) {
@@ -100,15 +104,13 @@ const DashboardProfilePage = () => {
           <div
             className={`fixed inset-0 flex items-center justify-center bg-black/30 z-50  ${!isdelete ? "hidden" : "block"}`}
           >
-            <DeleteCard
-            
+            <DeleteCard 
             Cancel={() => setIsDelete(false)}
-            Delete={()=>handleDeleteJob(e, jobs?.job_id)} />
+             Delete={handleDeleteJob} />
           </div>
 
           <h1 className="text-xl sm:text-2xl md:text-4xl py-4 font-semibold text-center md:text-left">
             Job posted details
-            
           </h1>
 
           {/*  CARD LIST FIX */}
@@ -119,11 +121,9 @@ const DashboardProfilePage = () => {
                   <JobPostCard
                     key={item.job_id || item.id}
                     {...item}
-                    
-                    Delete={handleDelete}
+                    Delete={() => handleDelete(item.job_id)}
                   />
                 );
-                
               })
             ) : (
               <div className="text-center py-10 text-textcolor2 italic">
