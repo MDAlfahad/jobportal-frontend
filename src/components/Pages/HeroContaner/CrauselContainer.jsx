@@ -68,7 +68,7 @@ const CrauselContainer = () => {
         {/* LEFT BUTTON */}
         <button
           onClick={prevSlide}
-          className="hidden sm:block p-1 xl:p-3 bg-gray-200 dark:text-black rounded-full mx-2 hover:bg-secondary hover:text-white transition"
+          className=" sm:block p-0.5 xl:p-3 bg-gray-200 dark:text-black rounded-full  hover:bg-secondary hover:text-white transition"
         >
           <MoveLeft />
         </button>
@@ -94,7 +94,7 @@ const CrauselContainer = () => {
 
         <button
           onClick={nextSlide}
-          className="hidden sm:block p-1 xl:p-3 bg-gray-200 dark:text-black rounded-full mx-2 hover:bg-secondary hover:text-white transition"
+          className=" sm:block p-0.5  xl:p-3 bg-gray-200 dark:text-black rounded-full  hover:bg-secondary hover:text-white transition"
         >
           <MoveRight />
         </button>
