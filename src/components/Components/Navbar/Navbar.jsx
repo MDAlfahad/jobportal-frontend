@@ -167,7 +167,7 @@ const Navbar = ({}) => {
           )}
           <div
             onClick={userclick}
-            className={`md:block bg-secondary text-white border-2 border-gray-200 rounded-full cursor-pointer hover:bg-white hover:text- transition overflow-hidden
+            className={`md:block bg-secondary text-white border-2 border-secondary  rounded-full cursor-pointer hover:bg-white hover:text-secondary transition overflow-hidden
   ${!role ? "p-2" : "bg-lightblue"}`}
           >
             {!role ? (

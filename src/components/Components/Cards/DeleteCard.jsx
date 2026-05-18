@@ -4,7 +4,7 @@ import { BiSolidErrorAlt } from "react-icons/bi";
 
 const DeleteCard = ({ Remove, Cancel }) => {
   return (
-    <div className=" lg:w-96 px-2 py-4 flex flex-col items-center justify-center rounded-sm shadow-xl border border-gray-200 bg-white relative">
+    <div className=" lg:w-96 px-2 py-4 flex flex-col items-center justify-center rounded-sm shadow-xl border border-gray-200 bg-white dark:bg-gray-900 dark:border-none relative">
       <span className="p-4 bg-red-100 rounded-full">
         <BiSolidErrorAlt size={50} color="red" />
       </span>
@@ -17,7 +17,7 @@ const DeleteCard = ({ Remove, Cancel }) => {
       <div className="flex items-center gap-4">
         <button
           type="button"
-          className="px-6 py-[6.5px] border border-gray-300 rounded-sm "
+          className="px-6 py-[6.5px] border border-gray-300 rounded-sm hover:bg-gray-100 dark:hover:bg-gray-800 "
           onClick={Cancel}
         >
           Cancel

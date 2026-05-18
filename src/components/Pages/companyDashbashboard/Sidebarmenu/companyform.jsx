@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useAuthStore from "../../../../Store/userAuth";
 import axios from "axios";
 import Button from "../../../Components/buttons/ButtonComponents";
-
+import { VscCloudUpload } from "react-icons/vsc";
 const CompanyFrom = () => {
   const API = import.meta.env.VITE_API_URL;
   const { user } = useAuthStore();
@@ -154,7 +154,7 @@ const CompanyFrom = () => {
               className="border-2 border-textcolor2  border-dashed rounded-sm p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
             >
               <span className="text-sm text-textcolor dark:text-gray-400">
-                {image ? image.name : "Click to upload image"}
+                {image ? image.name : <p className="flex items-center gap-2"> <VscCloudUpload size={22} /> Click to upload image</p>}
               </span>
             </label>
 

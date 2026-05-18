@@ -2,7 +2,7 @@ import Button from "../Components/buttons/ButtonComponents";
 
 const Errorcard = ({ head, onclick, para, image }) => {
   return (
-    <div className="lg:w-96 px-2 py-4 flex flex-col items-center justify-center rounded-sm shadow-xl border border-gray-200 bg-white relative">
+    <div className="w-80 lg:w-96 px-2 py-4 flex flex-col items-center justify-center rounded-sm shadow-xl border border-gray-200 bg-white dark:bg-gray-900 dark:border-none dark:text-white relative">
       <div>
       <div className="flex items-center justify-center py-2">{image}</div>
         <div>
