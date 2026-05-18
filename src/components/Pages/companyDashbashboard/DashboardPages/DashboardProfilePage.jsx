@@ -106,7 +106,7 @@ const DashboardProfilePage = () => {
           >
             <DeleteCard 
             Cancel={() => setIsDelete(false)}
-             Delete={handleDeleteJob} />
+             Remove={handleDeleteJob} />
           </div>
 
           <h1 className="text-xl sm:text-2xl md:text-4xl py-4 font-semibold text-center md:text-left">
