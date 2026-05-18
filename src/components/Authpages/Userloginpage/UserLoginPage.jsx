@@ -7,8 +7,8 @@ import useAuthStore from "../../../Store/userAuth";
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
 import Image from "../../images/authpage.jpg";
 import Errorcard from "../ErrorCard";
-import ErrorImage from "../../images/error.png";
-import GreenTick from "../../images/greenTick.png";
+import { BsCheckCircleFill } from "react-icons/bs";
+import { BiSolidErrorAlt } from "react-icons/bi";
 // import apiClient from "../../../API/API";
 
 const UserLoginPage = () => {
@@ -17,7 +17,15 @@ const UserLoginPage = () => {
   const navigate = useNavigate();
   const setAuth = useAuthStore((state) => state.setAuth);
   const [show, setshow] = useState(false);
-  const {user,  message, success, setMessage, loading, setLoading, clearMessage } = useAuthStore();
+  const {
+    user,
+    message,
+    success,
+    setMessage,
+    loading,
+    setLoading,
+    clearMessage,
+  } = useAuthStore();
   const [popup, setpopup] = useState({
     show: false,
     message: "",
@@ -76,28 +84,39 @@ const UserLoginPage = () => {
       <div className="max-w-[1800px] m-auto py-20 flex flex-col justify-center items-center h-screen   px-4 md:px-12 h-sceen  relative bg-gray-100 dark:bg-black">
         <div
           className={
-            message ? "absolute top-20 left-1/2 -translate-x-1/2 z-50 " : "hidden"
+            message
+              ? "fixed inset-0 flex items-center justify-center bg-black/30 z-50"
+              : "hidden"
           }
         >
           <Errorcard
             onclick={() => {
-             clearMessage();
-             if(success === false) return
+              clearMessage();
+              if (success === false) return;
               if (user?.auth_role === "admin") navigate("/admin-dashboard");
-              else if (user?.auth_role === "company") navigate("/Dashboard-Company");
+              else if (user?.auth_role === "company")
+                navigate("/Dashboard-Company");
               else {
-                navigate("/")
+                navigate("/");
               }
             }}
             image={
               success === false ? (
-                <img src={ErrorImage} width={70} />
+                <span className="p-4 bg-red-100 rounded-full">
+                  <BiSolidErrorAlt size={50} color="red" />
+                </span>
               ) : (
-                <img src={GreenTick} width={60} />
+                <span className="p-4 rounded-full bg-green-100">
+                  <BsCheckCircleFill size={60} color="green" />
+                </span>
               )
             }
             para={
-              success === true ? <p className="text-[green]">Congratulations</p>: <p className="text-[red]">Error state Conformation</p> 
+              success === true ? (
+                <p className="text-[green]">Congratulations</p>
+              ) : (
+                <p className="text-[red]">Error state Conformation</p>
+              )
             }
             head={message}
             type={success ? "success" : "error"}
@@ -131,11 +150,13 @@ const UserLoginPage = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-                <p onClick={showPassword} >
+                <p onClick={showPassword}>
                   {!show ? <VscEye size={22} /> : <VscEyeClosed size={22} />}
                 </p>
               </span>
-              <p className="text-[12px] text-end hover:underline cursor-pointer">Forget passwod ?</p>
+              <p className="text-[12px] text-end hover:underline cursor-pointer">
+                Forget passwod ?
+              </p>
               <p className="text-[red]">{popup.message}</p>
 
               <button

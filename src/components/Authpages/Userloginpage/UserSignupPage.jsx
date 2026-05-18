@@ -6,15 +6,15 @@ import axios from "axios";
 import Image from "../../images/authpage.jpg";
 import useAuthStore from "../../../Store/userAuth";
 import Errorcard from "../ErrorCard";
-import { VscEye, VscEyeClosed } from "react-icons/vsc";;
-import ErrorImage from "../../images/error.png"
-import GreenTick from "../../images/greenTick.png"
-
+import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { BsCheckCircleFill } from "react-icons/bs";
+import { BiSolidErrorAlt } from "react-icons/bi"
 
 const UserLSignupPage = () => {
   const navigate = useNavigate();
   const [show, setshow] = useState(false);
-  const { message, success, setMessage,setLoading, loading, clearMessage } = useAuthStore();
+  const { message, success, setMessage, setLoading, loading, clearMessage } =
+    useAuthStore();
   const showPassword = () => {
     setshow(!show);
   };
@@ -49,12 +49,10 @@ const UserLSignupPage = () => {
 
       const result = res.data;
       setMessage(result.message, result.success);
-
-      
     } catch (err) {
       const errorMsg = err.response?.data?.message || "Something went wrong";
       setMessage(errorMsg, false);
-    } finally{
+    } finally {
       setLoading(false);
     }
   };
@@ -68,20 +66,45 @@ const UserLSignupPage = () => {
       <div className="max-w-[1800px] m-auto py-20 flex flex-col justify-center items-center h-screen   px-4 md:px-12 h-sceen  relative bg-gray-100 dark:bg-black">
         <div
           className={
-            message ? "absolute top-20 left-1/2 -translate-x-1/2 z-50" : "hidden"
+            message
+              ? "fixed flex inset-0 justify-center items-center bg-black/30 z-50"
+              : "hidden"
           }
         >
           <Errorcard
-          onclick={!success==true ?clearMessage : message => navigate("/login-page")}
-          image={!success === true ? <img src={ErrorImage} width={70}/> : <img src={GreenTick} width={70}/> }
-          para = {!success === true ? "Error state Conformation" : "Congratulations"}
-          head={message } 
-          type={success ? "success" : "error"}
-           />
+            onclick={
+              !success == true
+                ? clearMessage
+                : (message) => navigate("/login-page")
+            }
+            image={
+              !success === true ? (
+                <span className="p-4 bg-red-100 rounded-full">
+                  <BiSolidErrorAlt size={50} color="red" />
+                </span>
+              ) : (
+                 <span className="p-4 rounded-full bg-green-100">
+                  <BsCheckCircleFill size={60} color="green" />
+                </span>
+              )
+            }
+            para={
+              success === true ? (
+                <p className="text-[green]">Congratulations</p>
+              ) : (
+                <p className="text-[red]">Error state Conformation</p>
+              )
+            }
+            head={message}
+            type={success ? "success" : "error"}
+          />
         </div>
         <div className="flex justify-center items-center gap-10 border overflow-hidden bg-white rounded-xl p-2 dark:bg-gray-900 dark:border-none dark:text-white ">
           {/* login form */}
-          <form className="p-6 w-full lg:w-[400px] flex flex-col " onSubmit={handlEvent}>
+          <form
+            className="p-6 w-full lg:w-[400px] flex flex-col "
+            onSubmit={handlEvent}
+          >
             <h1 className="text-center font-medium text-xl md:text-3xl text-textcolor py-4 dark:text-white">
               Get Registerd Here!
             </h1>
@@ -132,17 +155,18 @@ const UserLSignupPage = () => {
                 <p onClick={showPassword}>
                   {" "}
                   {!show ? (
-                    <VscEye  size={22}  />
+                    <VscEye size={22} />
                   ) : (
-                    <VscEyeClosed  size={22} className="bg-none" />
+                    <VscEyeClosed size={22} className="bg-none" />
                   )}
                 </p>
               </span>
               <p className="text-[red]">{popup.message}</p>
               <button
-              disabled={loading}
-              className="w-full p-2 border rounded-sm my-2 bg-secondary hover:bg-textcolor text-white font-medium dark:border-none">
-                {loading ? "Creating account...": "Create account"}
+                disabled={loading}
+                className="w-full p-2 border rounded-sm my-2 bg-secondary hover:bg-textcolor text-white font-medium dark:border-none"
+              >
+                {loading ? "Creating account..." : "Create account"}
               </button>
             </div>
             <p className="text-sm md:text-[12px] text-center">
@@ -167,11 +191,7 @@ const UserLSignupPage = () => {
             </div>
           </form>
           <div className="hidden md:block">
-            <img
-              src={Image}
-              alt=""  
-              className="dark:opacity-80"
-            />
+            <img src={Image} alt="" className="dark:opacity-80" />
           </div>
         </div>
       </div>
