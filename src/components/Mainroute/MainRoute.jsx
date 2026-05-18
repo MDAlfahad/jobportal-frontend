@@ -27,22 +27,12 @@ const MainRoute = () => {
   setTheme(theme);
 }, []);
 
-  const [show, setShow] = useState(false);
-
-  const handleshow = () => {
-    setTimeout(() => {
-      setShow(!show);
-    }, 2000);
-  };
-
   return (
     <Router>
       <ScrollTopTop />
 
       <Navbar />
-      <div className={`${show ? "hidden " : "fixed bottom-5 right-2 z-50"} `}>
-        <TopBar onClick={handleshow} />
-      </div>
+      
       <Routes>
         {/* --- Public Routes --- */}
         <Route path="/" element={<Hero />} />

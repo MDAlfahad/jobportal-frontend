@@ -8,6 +8,7 @@ import Button from "../../../Components/buttons/ButtonComponents";
 import { useNavigate } from "react-router-dom";
 import DeleteCard from "../../../Components/Cards/DeleteCard";
 import axios from "axios";
+import { FiEdit } from "react-icons/fi";
 
 const DashboardProfilePage = () => {
   const API = import.meta.env.VITE_API_URL;

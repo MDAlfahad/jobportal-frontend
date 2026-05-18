@@ -2,8 +2,9 @@ import { Locate } from "lucide-react";
 import { useState } from "react";
 import { FaLocationArrow, FaRegSun } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
-import { GoTrash } from "react-icons/go";
+import { LiaEdit } from "react-icons/lia";
 import { TfiArrowCircleDown, TfiArrowCircleRight } from "react-icons/tfi";
+import { GoDotFill } from "react-icons/go";
 
 const JobPostCard = ({
   job_desigination,
@@ -29,7 +30,7 @@ const JobPostCard = ({
     <>
       <div className="w-full h-auto md:px-2 ">
         <div className="w-full border rounded-sm overflow-hidden bg-gray-100 dark:bg-gray-900 dark:text-white dark:border-none border-0.5 text-black">
-          <div className="w-full flex ">
+          <div className="w-full flex items-center ">
             <div className="w-2 h-50  bg-secondary"></div>
             <div className="py-4  flex justify-between pl-1 md:pl-3 pr-1 md:pr-6 w-full">
               <div>
@@ -44,7 +45,9 @@ const JobPostCard = ({
                   {job_location}
                 </p>
               </div>
+
               <div className="flex  items-center md:gap-12">
+                <div className="flex items-center text-[green]"><GoDotFill /> Active</div>
                 <div className="flex flex-col gap-2">
                   <p className="text-[10px] md:text-[14px] font-medium">
                     Start Date: {job_startdate}
@@ -53,18 +56,22 @@ const JobPostCard = ({
                     Apply By: {Job_lastdate}
                   </p>
                 </div>
-                 <div className="md:flex items-center gap-2">
-                  <p className="pb-6 md:pb-0"><GoTrash size={20} color="red" onClick={Delete}/></p>
-                <p onClick={toggleShow}>
-                 
-                  {!isShow ? (
-                    <TfiArrowCircleRight className="text-2xl text-secondary" />
-                  ) : (
-                    <TfiArrowCircleDown className="text-2xl text-secondary" />
-                  )}
-                </p>
-                 </div>
-                
+                <div className="md:flex items-center gap-2">
+                  <p className="pb-6 md:pb-0">
+                    <LiaEdit
+                      size={25}
+                      className="cursor-pointer text-secondary "
+                      onClick={Delete}
+                    />
+                  </p>
+                  <p onClick={toggleShow}>
+                    {!isShow ? (
+                      <TfiArrowCircleRight className="text-2xl text-secondary" />
+                    ) : (
+                      <TfiArrowCircleDown className="text-2xl text-secondary" />
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

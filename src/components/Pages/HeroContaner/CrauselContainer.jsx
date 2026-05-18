@@ -17,7 +17,7 @@ const CrauselContainer = () => {
       else if (window.innerWidth < 1024) setVisibleCards(2);
       else setVisibleCards(3);
     };
-
+ 
     handleResize();
     window.addEventListener("resize", handleResize);
 

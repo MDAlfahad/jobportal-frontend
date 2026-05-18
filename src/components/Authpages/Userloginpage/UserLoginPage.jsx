@@ -75,6 +75,26 @@ const UserLoginPage = () => {
   const showPassword = () => {
     setshow(!show);
   };
+  //timout setting 
+
+  useEffect(() => {
+    if (success === true) {
+      const timer = setTimeout(() => {
+        clearMessage();
+
+        if (user?.auth_role === "admin") {
+          navigate("/admin-dashboard");
+        } else if (user?.auth_role === "company") {
+          navigate("/Dashboard-Company");
+        } else {
+          navigate("/");
+        }
+      }, 3000); 
+
+      return () => clearTimeout(timer);
+    }
+  }, [success, user, navigate]);
+
   useEffect(() => {
     clearMessage();
   }, []);
